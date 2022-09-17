@@ -1,0 +1,148 @@
+.acitveTest{
+  background-color: red;
+  font-size: 50px;
+  color: green;
+}
+
+
+
+
+#myTab
+{
+    border: none;
+}
+.statsTD{
+  text-align: right;
+  border: 1px solid white;
+}
+
+.HyperparametresDIV{
+  padding: 0 6px 0 0;
+}
+#trainButton{
+  height: 100%;
+  font-size: 30px;
+}
+
+/* #collapseExample
+{
+  padding: 0px;
+} */
+
+#advButton
+{
+  width: 97.8%;
+}
+
+/* .myFontSize
+{
+  font-size: smaller;
+  font-weight: 400;
+} */
+
+.myButtonCircular
+{
+  border-radius: 50%;
+}
+
+
+
+.myHeaderWidth {
+  width: 100%;
+
+}
+
+.myBorder
+{
+  border: 1px solid white;
+}
+.btnTransparent{
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  width: 100%;
+  display: block;
+  margin: 0px;
+  padding: 15px;
+  height: 100%;
+  border-radius: 0px;
+}
+
+// .btnTransparent::focus{
+//   outline: none !important;
+//   box-shadow: none !important;
+// }
+
+
+.accordion-button
+{
+  font-weight: bold;
+  background-color: #212529;
+  color:#FFFFFF;
+}
+
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+
+.accordion-button:focus
+{
+  outline:0 !important;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.modal-content
+{
+    background-color: var(--form-color);
+}
+
+
+@media(min-width: 768px)
+{
+  .buttonBorder{
+
+  }
+
+}
+@media(max-width: 767px)
+{
+  .buttonBorder{
+    border: 1px solid var(--text-color);
+  }
+
+}
+
+#desnaStrelica{
+  position: absolute;
+  top: 48vh;
+  right: 1vw;
+}
+#desnaStrelica :hover{
+  color: var(--button-color);
+}
+#levaStrelica{
+  position: absolute;
+  top: 48vh;
+  left: 1vw;
+}
+#levaStrelica :hover{
+  color: var(--button-color);
+}
+
+

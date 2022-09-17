@@ -1,0 +1,210 @@
+<!--
+<span id="desnaStrelica" style="z-index: 200000;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+  </svg>
+</span>
+<span id="levaStrelica" style="z-index: 200000;">
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+</svg>
+</span> -->
+
+<div *ngIf="(accountService.curentUser$ | async) === null">
+
+  <div class="container-fluid h-100 col-md-12 d-flex justify-content-center mt-5">
+    <div class="row mt-5 border p-5 rounded innerSiteContainer">
+      <div class="col-md-12 d-flex justify-content-center text-center">
+        <div style="font-weight: bolder; font-size: xx-large; color: var(--text-color);">{{'playground.p54' | translate}}</div><br>
+      </div>
+      <div class="col-md-12 col-sm-12 d-flex justify-content-center">
+        <div class="col-md-10 col-sm-10 mt-3">
+          <button type="button" routerLink="/login" class="btn btn-primary btn-lg col-md-12 col-sm-12 mb-3" style="width: 100%;">{{'playground.p55' | translate}}</button><br>
+          <p class="d-flex justify-content-center">Or</p>
+          <button type="button" routerLink="/register" class="btn btn-primary btn-lg col-md-12 col-sm-12" style="width: 100%;">{{'playground.p56' | translate}}</button>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+<div *ngIf="accountService.curentUser$ | async">
+  <ul class="nav nav-tabs justify-content-center rounded" id="myTab" role="tablist">
+    <div class="container-fluid px-0">
+      <div class="row g-0">
+        <div class="col-md-3">
+          <li class="nav-item col-md-12 col-sm-12 h-100" role="presentation">
+            <button style="border-left: 0px;"
+              class="buttonBorder navButton btn btn-lg border-secondary w-100 h-100" [style]="(this.glob.fileprojects)?'background-color: var(--background-color); color: var(--button-color); border-bottom: none; border-top: 1px solid gray':''"
+              type="button" (click)="fileprojectsOpen()"
+              [disabled]="this.table?.getShowTable()!">
+              
+              {{'playground.p57' | translate}}</button>
+          </li>
+        </div>
+        <div class="col-md-3">
+          <li class="nav-item col-md-12 col-sm-12 h-100" role="presentation">
+            <button style="border-left: 0px;"
+              class="buttonBorder navButton btn btn-lg border-secondary w-100 h-100" id="home-tab"
+              (click)="dataOpen()"
+              [style]="(this.glob.data)?'background-color: var(--background-color); color: var(--button-color); border-bottom: none; border-top: 1px solid gray':''"
+              [disabled]="!this.table?.getShowTable()!"
+              >
+              {{'playground.p58' | translate}}</button>
+          </li>
+        </div>
+        <div class="col-md-3">
+          <li class="nav-item  col-md-12 col-sm-12 h-100" role="presentation"
+
+          >
+            <button style="border-left-style: none;"
+
+              class="buttonBorder navButton btn btn-lg border-secondary w-100 h-100" id="profile-tab" [style]="(this.glob.parameters)?'background-color: var(--background-color); color: var(--button-color);  border-bottom: none; border-top: 1px solid gray':''"
+              (click)="parametersOpen()"
+              [disabled]="!this.table?.getShowTable()!"
+              >
+              
+              {{'playground.p59' | translate}}
+            </button>
+          </li>
+        </div>
+        <div class="col-md-3">
+          <li class="nav-item  col-md-12 col-sm-12 h-100" role="presentation">
+          <button style="border-left-style: none; border-right: 0px;"
+            class="buttonBorder navButton btn btn-lg border-secondary w-100 h-100" id="profile-tab"
+            (click)="modelsOpen()"
+            [disabled]="(!this.table?.getShowTable()) || (this.table.inputs.length == 0) || (this.table.output == null || this.table.output == '')"
+            [style]="(this.glob.models)?'background-color: var(--background-color); color: var(--button-color); border-bottom: none; border-top: 1px solid gray':''"
+
+            >
+            {{'playground.p60' | translate}}
+          </button>
+          </li>
+        </div>
+
+      </div>
+    </div>
+  </ul>
+
+    <div class="px-3" id="fileprojects" role="tabpanel" aria-labelledby="fileprojects" *ngIf="this.glob.fileprojects">
+      <app-new-experiment
+      (emitTable)="GetTable($event)"
+      (emitExpName)="GetExpName($event)"
+      (emitExpCsv)="GetExpCsv($event)"
+      ></app-new-experiment>
+    </div>
+    <!-- Load CSV and Show Table Tab -->
+    <div *ngIf="this.glob.data">
+
+
+      <app-files
+      (emitTable)="GetTable($event)"
+
+      ></app-files>
+
+      <div class="container-fluid px-5">
+        <div class="d-flex row mb-3" *ngIf="this.table.getShowTable()">
+
+          <div class="col-md-3">
+            <div class="text-center d-grid mt-3 mb-3">
+              <!-- <button class="btn btn-primary btn-block" (click)="closeTable()" type="button"
+                *ngIf="this.table.getShowTable()">
+                {{'playground.p61' | translate}}</button> -->
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="text-center d-grid mt-3  mb-3">
+
+              <span id="desnaStrelica" style="z-index: 200000;" (click)="NextPage(1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                </svg>
+
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="parameters" *ngIf="this.glob.parameters">
+      <app-parameters
+      (emitInputs)="GetInputs($event)"
+      (emitOutputs)="GetOutputs($event)"
+      (emitEncoding)="GetEncoding($event)"
+      (emitEncodings)="GetEncodings($event)"
+      [inputs]="this.table.inputs"
+      [output]="output"
+      [encodingMethod]="encodingMethod"
+      >
+
+      </app-parameters>
+      <span id="levaStrelica" style="z-index: 200000;" (click)="NextPage(0)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>
+        </span>
+      <span id="desnaStrelica" style="z-index: 200000;" (click)="NextPage(2)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+      </svg>
+      </span>
+      <!-- <div class="container-fluid px-5">
+        <div class="row">
+
+          <div class="col-md-4" style="height: 4vh;">
+
+          </div>
+          <div class="col-md-4" style="border-left: 1px solid var(--text-color); border-right: 1px solid var(--text-color);">
+
+          </div>
+
+          <div class="col-md-4 d-flex justify-content-center border-left px-0">
+            <button type="button" (click)="NextPage(2)" class="offset-md-1 btn btn-primary w-100"
+            [disabled]="(!this.table?.getShowTable()) || (this.table.inputs.length == 0) || (this.table.output == null || this.table.output == '')"
+            >{{'playground.p62' | translate}}</button>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+    <!-- Playground Hyperparametres Tab -->
+    <div id="profile" *ngIf="this.glob.models">
+
+
+      <app-model
+          [inputs]="this.table.inputs"
+          [output]="output"
+          [encodingMethod]="encodingMethod"
+          [encodings]="this.encodings"
+          ></app-model>
+
+          <app-graphic></app-graphic>
+
+          <span id="levaStrelica" style="z-index: 200000;" (click)="NextPage(1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+            </svg>
+            </span>
+    </div>
+
+    <!-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div> -->
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <button class="btn btn-primary" (click)="WebServiceTest()">TEST WebService</button> -->

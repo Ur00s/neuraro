@@ -1,0 +1,58 @@
+<div class="siteContainer container mt-5 mb-5 pb-4 rounded shaded">
+   <div class="d-flex justify-content-center pt-5 text-center">
+      <div class="col-md-8">
+         <h3>{{ "chatbot.Chatbot-virtual-assitant" | translate}}</h3>
+         <span *ngIf="this.OnlineOrOffline" >Online <span id="onlineIndicator"></span></span>
+         <span *ngIf="!this.OnlineOrOffline" >Offline <span id="offlineIndicator"></span></span>
+         <div #scrollMe [scrollTop]="scrollMe?.scrollHeight" class="col-md-12 rounded border innerSiteContainerTopic mt-1 mb-3 py-4 px-3" style="height: 50vh; overflow: auto;">
+            <div class="d-flex col-md-6 justify-content-start align-items-center" *ngIf="this.OnlineOrOffline">
+               <span class="border rounded p-3 innerSiteContainer col-md-10">{{ "chatbot.start" | translate}}</span>
+            </div>
+            <div *ngFor="let con of this.Conversation,index as i">
+               <div *ngIf="i%2==0" class="d-flex col-md-6 offset-md-6 justify-content-end align-items-center mt-2">
+                  <span class="border rounded p-3 innerSiteContainer col-md-10">{{con}}</span>
+               </div>
+               <div *ngIf="i%2!=0" class="d-flex col-md-6 justify-content-start align-items-center">
+                  <span class="border rounded p-3 innerSiteContainer col-md-10">{{con}}</span>
+               </div>
+
+
+            </div>
+            <!-- <div class="d-flex col-md-6 justify-content-start align-items-center">
+                           <span class="border rounded p-3 innerSiteContainer col-md-10">Hi Bogdan, I am a virtual assistant! How can I help you?</span>
+            </div>
+
+            <div class="d-flex col-md-6 offset-md-6 justify-content-end align-items-center mt-2">
+
+               <span class="border rounded p-3 innerSiteContainer col-md-10">I don't know how to train a model!</span>
+            </div> -->
+
+            <!-- <div class="d-flex col-md-6 justify-content-start align-items-center mt-2">
+
+               <span style="border-radius: 50px; background-color: var(--button-color); color: white; height: 40px; width: 40px;" class="p-2 me-2 col-md-2">CB</span>
+               <span class="border rounded p-3 innerSiteContainer  col-md-10" >Let me help you with that. You first need to load a csv file and that pick input and output parameters. The next thing you need to do is to adjust hyperparameters and you are now good to go. All you need to do is to click TRAIN MODEL button!</span>
+            </div>
+
+            <div class="d-flex col-md-6 offset-md-6 justify-content-end align-items-center  mt-2">
+
+               <span class="border rounded p-3 innerSiteContainer col-md-10" >What is encoding?</span>
+               <span style="border-radius: 50px; background-color: var(--button-color); color: white; height: 40px; width: 40px;" class="p-2 ms-2 col-md-2">BJ</span>
+            </div>
+
+            <div class="d-flex col-md-6 justify-content-start align-items-center mt-2">
+
+               <span style="border-radius: 50px; background-color: var(--button-color); color: white; height: 40px; width: 40px;" class="p-2 me-2 col-md-2">CB</span>
+               <span class="border rounded p-3 innerSiteContainer col-md-10" >Encoding is used for categorical variables.</span>
+            </div> -->
+
+         </div>
+
+         <form class="" [formGroup]="msgForm" (ngSubmit)="send()" *ngIf="this.OnlineOrOffline">
+            <div class="input-group mb-3 col-sm-12 p-0">
+               <input type="text" formControlName="message" id="Question" (keyup)="checkVal()" class="form-control innerSiteContainerTopic" placeholder="{{'chatbot.placeholder' | translate}}" maxlength="1024" >
+               <button type="submit" class="btn btn-primary" [disabled]="this.msgForm.value.message.length==0||this.waiting==true||this.ValueCheck==false   " style="height: 38px;">{{"chatbot.Send" | translate}}</button>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

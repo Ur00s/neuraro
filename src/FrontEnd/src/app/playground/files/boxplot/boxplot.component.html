@@ -1,0 +1,42 @@
+<div id="wholeContainer" class="container-fluid">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12">
+      <div class="col-md-12 text-start col-sm-12">
+        <span class="Titles" style="user-select: none;">{{'outlierNA.p3' | translate}}</span>
+      </div>
+      <select (change)="updateChart($event)" style="width: 100%; border-radius: 3px; border: 1px solid gray;" class="form-select form-control mb-2">
+        <option *ngFor="let stat of this.numericalStats" value = {{stat.name}} >{{stat.name}}</option>
+      </select>
+    </div>
+
+
+  
+
+    <div class="row d-flex justify-content-center">
+      <div id="container">
+        <canvas canvas id="canvas"></canvas>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div class="modal-footer d-flex justify-content-center align-content-center">
+        <div class="container-fluid">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-12 col-sm-12 d-flex justify-content-center mb-1">
+              <button (click)="this.clearColumnOutliers($event)" value={{this.colNameSave}} type="button" class="btn btn-primary btn-sm" >{{'outlierNA.p2' | translate}} {{this.colNameSave}}</button>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+  

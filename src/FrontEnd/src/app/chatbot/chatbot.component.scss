@@ -1,0 +1,16 @@
+#onlineIndicator{
+    border-radius: 50px;
+    height: 10px;
+    width: 10px;
+    background-color: greenyellow;
+    margin-top: 1px;
+    display: inline-block;
+}
+#offlineIndicator{
+    border-radius: 50px;
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    margin-top: 1px;
+    display: inline-block;
+}

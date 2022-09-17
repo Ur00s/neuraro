@@ -1,0 +1,472 @@
+<div class="container-fluid px-5" *ngIf="this.table.getShowTable()">
+
+  <div class="d-flex row mb-2 justify-content-center">
+    <div>
+
+
+      <div class="d-flex row mb-2 justify-content-center">
+
+        <div class="container mt-4 mb-2 d-flex justify-content-center px-0 kanta">
+          <div class="col-md-11 row d-flex rounded border p-2 justify-content-center innerSiteContainer">
+
+            <div cdkDropList cdkDropListOrientation="horizontal"
+              class="p-0 m-0 col-xl-2 col-lg-4 col-md-4 col-sm-12 example-list" (cdkDropListDropped)="drop($event)">
+
+              <div cdkDrag title="Drag me"
+                class="innerSiteContainerTopic p-0 mt-0 mb-1 mx-2 d-flex justify-content-center rounded shadow innerSiteContainer example-box"
+                *ngFor="let stat of this.table.stats;index as i"
+                style="min-width: 200px; border: 1px solid rgb(186, 186, 186);">
+
+                <div class="container-fluid innerSiteContainerTopic pb-3 pt-1 px-3 mx-2">
+
+                  <div class="row">
+                    <div class="Titles col-md-12 text-center d-flex justify-content-center" style="font-size: 14px"
+                      title="{{stat.name}}">
+                      {{ (stat.name+"").slice(0, 8) }}<span *ngIf="(stat.name+'').length > 7">...</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 mx-0 text-start">
+                      Count:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.count}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <ng-container *ngIf="!stat.top">
+
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        MIN:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{(fixDecimals(stat.min))}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        MAX:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{fixDecimals(stat.max)}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        STD:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{(fixDecimals(stat.std))}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Mean:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{fixDecimals(stat.mean)}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Nulls:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{stat.numberOfNan}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        25%:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{fixDecimals(stat.firstQuartile)}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Median:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{fixDecimals(stat.median)}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        75%:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{fixDecimals(stat.thirdQuartile)}}
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+
+                  <ng-container *ngIf="stat.top">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Unique:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{stat.unique}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Top:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end" title="{{stat.top}}">
+                        {{ (stat.top+"").slice(0, 10) }}<span *ngIf="(stat.top+'').length > 9">...</span>
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Freqency:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{stat.freq}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+                    <div class="row">
+                      <div class="col-md-6 mx-0  text-start ">
+                        Nulls:
+                      </div>
+                      <div class="col-md-6 text-center d-flex justify-content-end">
+                        {{stat.numberOfNan}}
+                      </div>
+                    </div>
+                    <hr style="margin: 0;">
+
+                  </ng-container>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container kanta1 rounded  p-2 innerSiteContainer pe-4 ps-2"
+          style="height: 30vh; overflow-y: auto; overflow-x: none; border: 1px solid gray;">
+          <div class="row">
+            <div class="statisticsCard" *ngFor="let stat of this.table.stats;index as i">
+              <div class="container-fluid border rounded mb-2 innerSiteContainerTopic px-3 pb-3 pt-1 mx-2">
+
+                <div class="row">
+                  <div class="Titles col-md-12 text-center d-flex justify-content-center">
+                    {{stat.name}}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mx-0  text-start ">
+                    Count:
+                  </div>
+                  <div class="col-md-6 text-center d-flex justify-content-end">
+                    {{stat.count}}
+                  </div>
+                </div>
+                <hr style="margin: 0;">
+                <ng-container *ngIf="!stat.top">
+
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      MIN:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.min}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      MAX:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.max}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      STD:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{(fixDecimals(stat.std))}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Mean:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{fixDecimals(stat.mean)}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Nulls:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.numberOfNan}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      25%:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{fixDecimals(stat.firstQuartile)}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Median:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{fixDecimals(stat.median)}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      75%:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{fixDecimals(stat.thirdQuartile)}}
+                    </div>
+                  </div>
+
+                </ng-container>
+
+
+                <ng-container *ngIf="stat.top">
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Unique:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.unique}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Top:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end" title="{{stat.top}}">
+                      {{ (stat.top+"").slice(0, 10) }}<span *ngIf="(stat.top+'').length > 9">...</span>
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Freqency:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.freq}}
+                    </div>
+                  </div>
+                  <hr style="margin: 0;">
+
+                  <div class="row">
+                    <div class="col-md-6 mx-0  text-start ">
+                      Nulls:
+                    </div>
+                    <div class="col-md-6 text-center d-flex justify-content-end">
+                      {{stat.numberOfNan}}
+                    </div>
+                  </div>
+
+
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{'outlierNA.p1' | translate}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+          </div>
+          <div class="modal-body">
+            <app-boxplot [numericalStats]="table.data.numericColumns" (dataChangedEvent)="refreshDataOutlierHandling($event)"></app-boxplot>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+
+    <div class="col-md-11 d-flex justify-content-center">
+      <div class="row d-flex justify-content-center">
+
+        <div class="col-mWWWWd-12 mb-3 px-0 d-flex justify-content-evenly">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modelId">
+            {{'outlierNA.p1' | translate}} <svg style="position: relative; top: -3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+              <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+            </svg>
+          </button>
+          <app-fill-values *ngIf="hideFillNAbutton()" (dataChangedEvent)="refreshData($event)" [updateStats]="this.updateStats"></app-fill-values> 
+        </div>
+
+        <div class="col-md-9 px-0 rounded" style="overflow-x: none;" *ngIf="this.table.getShowTable()">
+          <div>
+            <div class="tabela rounded" style="height: 60vh; overflow: auto; max-width: 75vw;">
+
+              <table class="tabelaTag table table-striped"
+                style="overflow-x: none; position: relative; top: 0; border-collapse: separate;">
+                <thead class="sticky-md-top border-1" style="z-index: 1;">
+                  <tr>
+                    <th class="text-center" *ngFor="let col of this.table.data.columns" style="width:200px;">{{ col }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bodyHoverable" style="z-index: -101;">
+                  <ng-container *ngFor="let res of this.page | dataSearch:this.filterargs, index as i">
+                    <tr class="">
+                      <td class="text-center" *ngFor="let row of res;index as j" id="{{i}}:{{j}}"
+                        (click)="this.showHideChanges($event)" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="{{row}}">
+
+                        <ng-container *ngIf="!this.showTableInputs[i][j]">
+                          {{ (row+"").slice(0, 10) }}<span *ngIf="(row+'').length > 9">...</span>
+                        </ng-container>
+
+                        <ng-container *ngIf="this.showTableInputs[i][j]">
+                          <form (ngSubmit)="changeValue($event,i,j)">
+                            <input type="text" class="" name="chVal" value="{{row}}" style="width: 100px; height: 36px; word-break: break-all; margin: 0; resize: none;">
+                          </form>
+                        </ng-container>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+
+            </div>
+            <div class="container-fluid px-0  innerSiteContainer rounded">
+              <div class="row g-0 d-flex">
+                <div class="col-md-4 mt-2">
+
+                  <div class="col-md-12 col-sm-12 col-xs-12 mb-2 px-2 d-flex justify-content-start">
+                    <input class="form-control" type="text" (keyup)="changeFilter($event)" id="search" placeholder="{{'playground.p18' | translate}}">
+
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4 mt-2 mx-auto d-flex justify-content-center">
+
+                  <ngb-pagination ngDefaultControl class="pagination" #p [collectionSize]="this.table.data.rows"
+                    [pageSize]="100" [(page)]="this.currentPage" (pageChange)="pageChanged($event)" [maxSize]="3"
+                    [(ngModel)]="this.currentPage" [boundaryLinks]="false" [rotate]="true" class="my-pagination"
+                    style="margin-bottom: 0 !important; margin-top: 0 !important; padding-bottom: 0 !important;">
+                  </ngb-pagination>
+
+                </div>
+                <div class="col-md-4 col-xs-12 mt-2 d-flex justify-content-end">
+
+                  <div class="col-md-10 col-sm-12 col-xs-12 ">
+                    <div class="row g-0">
+                      <div class="col-md-12 d-flex justify-content-end px-2 align-items-center">
+                        <span style="display: inline;">{{'playground.p19' | translate}}</span>
+
+                        <input id="pageInput" type="number" [defaultValue]="1" class="form-control w-25 mx-1">
+
+                        <span style="display: inline;">{{'playground.p20' | translate}}
+                          {{this.table.data.pageNumbers}}</span>
+                        <button class="btn btn-primary ms-2"
+                          (click)="changePageManually()">{{'playground.p21' | translate}}</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-12 innerSiteContainer rounded border ms-2" *ngIf="this.table.getShowTable()">
+            <div class="col-md-12 text-center my-2">
+              <span class="Titles" style="user-select: none;">{{'playground.p44' | translate}}</span>
+            </div>
+            <div class="col-md-12 p-3" style="height: 60vh; overflow-x: hidden; overflow-y: auto;">
+              <div *ngFor="let input of this.table.data.columns; index as i" class="d-flex justify content center">
+                <table class="table mb-2">
+                  <tbody>
+                    <tr class="evenTD rounded border">
+                      <div class="row">
+                        <td class="col-md-6">
+                          {{input}}
+                        </td>
+                        <td class="col-md-6">
+                          <!-- <select class="form-control form-select inputParameters border" name="" id="" (change)="setEncodingForColumn($event, input.columnName)"> -->
+                          <select class="form-controlParameters form-select" [ngModel]="this.encodings[i].encodingMethod" name="" id=""
+                            (change)="setEncoding($event, i)">
+                            <option selected value="none">None</option>
+                            <option value="labelencoder">{{'playground.p45' | translate}}</option>
+                            <option value="onehotencoder">{{'playground.p46' | translate}}</option>
+                            <option value="binaryencoder">{{'playground.p47' | translate}}</option>
+                          </select>
+                        </td>
+                      </div>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>

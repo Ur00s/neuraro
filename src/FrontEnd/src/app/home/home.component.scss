@@ -1,0 +1,30 @@
+#particles-js{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -2;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    user-select: none;
+    background: linear-gradient(#03001b, rgb(65,153,235));
+}
+.content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+.content1{
+    position: relative;
+    left: 51%;
+    top: 30px;
+    width: 223px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+}

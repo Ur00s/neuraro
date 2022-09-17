@@ -1,0 +1,116 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+      role="tab" aria-controls="nav-home" aria-selected="true">{{ "admin-panel.Users" | translate}}</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+      role="tab" aria-controls="nav-profile" aria-selected="false">{{ "admin-panel.Forum-posts" | translate}}</button>
+
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+    <div class="container">
+
+      <div class="d-flex row justify-content-center">
+        <div class="col-md-8 mt-3">
+          <h3 class="innerSiteContainer p-3 rounded user-select-none shadow-sm" style="color: rgb(65, 153, 235)">{{ "admin-panel.User-accounts-management" | translate}}</h3>
+        </div>
+      </div>
+
+      <div class="d-flex row justify-content-center">
+        <div class="col-md-8 mt-3 table-responsive">
+
+          <table class="table table-hover table-striped bg-white rounded shadow user-select-none"
+            *ngFor="let user of users; index as i">
+            <thead class="thead-default">
+              <tr>
+                <th colspan="2" class="paddingNone">
+                  <button class="btn btn-primary btnTransparent shadow-none" type="button" data-bs-toggle="collapse" attr.data-bs-target="#collapseExample{{i}}" aria-expanded="false" aria-controls="collapseExample">
+                    <b>{{ "admin-panel.Name" | translate}}:</b> {{user.firstName}} {{user.lastName}} &nbsp; &nbsp; &nbsp; &nbsp; <b>{{ "admin-panel.Username" | translate}}:</b>  {{user.username}}  &nbsp; &nbsp;&nbsp; &nbsp; <b>{{ "admin-panel.Email" | translate}}:</b> {{user.email}} &nbsp; &nbsp;&nbsp; &nbsp; ▼
+                  </button>
+              </th>
+
+              </tr>
+            </thead>
+
+              <tbody>
+                <tr>
+                  <td class="p-3 ps-5">
+                    <div class="collapse" id="collapseExample{{i}}">
+
+                    <p>
+                      <span style="font-weight: bolder;color:rgb(65, 153, 235)">{{ "admin-panel.First-name" | translate}}: <br> </span><a
+                      style="font-size:20px;" *ngIf="user.editText">{{user.firstName}}</a><input class="input"
+                      style="font-size: 18px; border-radius: 3px; border: 1px solid gray;" type="text" id="fn{{user.id}}"
+                      *ngIf="user.editInput" value="{{user.firstName}}">
+                      <br><span *ngIf="user.editInput" class="errorMsg">{{errorFirstName}}</span><br>
+                    </p>
+
+
+                    <p><span style="font-weight: bolder;color:rgb(65, 153, 235)">{{ "admin-panel.Last-name" | translate}}: <br> </span><a
+                        style="font-size:20px;" *ngIf="user.editText">{{user.lastName}}</a><input class="input"
+                        style="font-size: 18px; border-radius: 3px; border: 1px solid gray;" type="text"
+                        id="ln{{user.id}}" *ngIf="user.editInput" value="{{user.lastName}}">
+                        <br><span *ngIf="user.editInput" class="errorMsg">{{errorLastName}}</span><br>
+                      </p>
+
+                    <p><span style="font-weight: bolder;color:rgb(65, 153, 235)">{{ "admin-panel.Username" | translate}}: <br> </span><a
+                        style="font-size:20px;" *ngIf="user.editText">{{user.username}}</a><input class="input"
+                        style="font-size: 18px; border-radius: 3px; border: 1px solid gray;" type="text"
+                        id="un{{user.id}}" *ngIf="user.editInput" value="{{user.username}}">
+                      <br><span *ngIf="user.editInput" class="errorMsg">{{errorUserName}}</span><br>
+                        </p>
+                    <p>
+                      <span style="font-weight: bolder;color:rgb(65, 153, 235)">{{ "admin-panel.Email" | translate}}: <br> </span>
+                      <a style="font-size:20px;" *ngIf="user.editText">{{user.email}}</a>
+                      <input
+                          class="input"
+                          style="font-size: 18px; border-radius: 3px; border: 1px solid gray;" type="text"
+                          id="em{{user.id}}"
+                          *ngIf="user.editInput"
+                          value="{{user.email}}"
+                      >
+                      <br><span *ngIf="user.editInput" class="errorMsg">{{errorEmail}}</span><br>
+
+
+                  </p>
+
+                </div>
+                  </td>
+                  <td scope="row" class="text-center align-middle" style="width:200px;">
+                    <div class="collapse" id="collapseExample{{i}}">
+
+                    <div class="btn-group-vertical">
+                      <button type="button" class="btn btn-primary mb-1 p-3" *ngIf="user.editText" id="{{user.id}}"
+                        (click)="Delete($event)">{{ "admin-panel.Delete" | translate}}</button>
+                      <!-- <button type="button" class="btn btn-primary btn-sm mb-1" *ngIf="user.editText">Reset Password</button> -->
+                      <button type="button" class="btn btn-primary mb-1 p-3" *ngIf="user.editText"
+                        (click)="RoleChange($event)" id="{{user.id}}">{{user.PD}}</button>
+                      <button type="button" class="btn mb-1 p-3" [class.btn-primary]="user.editing=== false"
+                        [class.btn-danger]="user.editing=== true" id="{{user.id}}"
+                        (click)="EditUser($event)">{{user.editingTitle}}</button>
+                      <button type="button" *ngIf="user.editInput" class="btn btn-primary mb-1 p-3" id="{{user.id}}"
+                        (click)="FormEdit($event)">{{ "admin-panel.Edit" | translate}}</button>
+                    </div>
+
+                </div>
+                  </td>
+
+                </tr>
+
+              </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{{ "admin-panel.Forum-control" | translate}}</div>
+
+</div>

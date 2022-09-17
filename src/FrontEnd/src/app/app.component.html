@@ -1,0 +1,73 @@
+
+<app-navbar
+  [isGoogleUser]="this.isGoogleUser"
+  (emitGoogleUser)="setIsGoogleUser($event)"
+></app-navbar>
+<!-- <span *ngIf="globalClass.getTrainingStarted()" class="offcanvasClass d-flex justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="5vh" fill="currentColor" class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+  </svg>
+</span> -->
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="height: 70vh;">
+    <div class="offcanvas-header" style="background-color: rgb(65, 153, 235);">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel" style="color: white; font-size: x-large; font-weight: bold;">TRAINING PROGRESS</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" style="background-color: var(--background-color);">
+
+      <div class="container">
+
+      </div>
+
+      <div class="dropdown mt-3">
+        <div class="row px-5">
+          <div class="col-md-12 bg-warning p-2 rounded shadow mt-3 mb-3">
+            <div style="color: rgb(51, 51, 51); font-size: xx-large; font-weight: 700;">Model 1</div>
+            <div style="color: rgb(51, 51, 51); font-size: medium; font-weight: 700;">TRAINING...</div>
+            <div class="progress mt-2">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+            </div>
+            <div class="btn btn-primary mt-2 col-md-12 btn-sm">
+              Go to model
+            </div>
+          </div>
+        </div>
+
+        
+
+        
+            <div class="row px-5">
+              <div class="col-md-12 bg-success p-2 rounded shadow mt-3 mb-3">
+                <div style="color: rgb(51, 51, 51); font-size: xx-large; font-weight: 900;">Model 2</div>
+                <div style="color: rgb(51, 51, 51); font-size: medium; font-weight: 700;">FINISHED</div>
+                <div class="progress mt-2">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                </div>
+                <div class="btn btn-primary mt-2 col-md-12 btn-sm">
+                  Go to model
+                </div>
+              </div>
+            </div>
+     
+
+  
+          <div class="row px-5">
+            <div class="col-md-12 bg-danger p-2 rounded shadow mt-3 mb-3">
+              <div style="color: rgb(51, 51, 51); font-size: xx-large; font-weight: 700;">Model 3</div>
+              <div style="color: rgb(51, 51, 51); font-size: medium; font-weight: 700;">TRAINING FAILED</div>
+              <div class="progress mt-2">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
+              </div>
+              <div class="btn btn-primary mt-2 col-md-12 btn-sm">
+                Go to model
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<h3 style="position: absolute;bottom: 0;" *ngIf="accountService.curentUser$ | async">Online users: {{usersOnline.numberOfUsers}}</h3>
+ -->
+<router-outlet></router-outlet>

@@ -1,0 +1,100 @@
+
+    <div class="d-flex align-items-center justify-content-center" >
+      <!-- <div *ngIf="showSpinner" style="position: absolute; margin: auto;">
+        <app-spinner></app-spinner>
+      </div> -->
+      <form #registerForm="ngForm" (ngSubmit)="register()" class="m-4 p-5 border-secondary rounded shadow col-md-5" autocomplete="off">
+
+        <div class="row">
+            <div class="col-md-6 user-select-none"><h4>{{'register.p1' | translate}}:</h4></div>
+            <div class="col-md-6 user-select-none" ><p class="errorMsg" style="min-height: 80px;">{{errGen}}</p></div>
+        </div>
+
+        <!-- first name -->
+        <div class="mb-3 form-control-md">
+          <label for="RegisterInputFirstName" class="form-label user-select-none">{{'register.p2' | translate}}:</label>
+          <input type="text" class="form-control form-rounded" name="FirstName" id="RegisterInputFirstName" placeholder="{{'register.p3' | translate}}" [(ngModel)]="model.firstName" >
+          <p class="errorMsg">{{errFn}}</p>
+        </div>
+
+        <!-- last name -->
+        <div class="mb-3 form-control-md">
+            <label for="RegisterInputLastName" class="form-label form-label-lg user-select-none">{{'register.p4' | translate}}:</label>
+            <input type="text" class="form-control form-rounded" name="LastName" id="RegisterInputLastName" placeholder="{{'register.p5' | translate}}" [(ngModel)]="model.lastName">
+            <p class="errorMsg">{{errLn}}</p>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3 form-control-md">
+            <label for="RegisterInputEmail" class="form-label user-select-none">{{'register.p6' | translate}}:</label>
+            <input type="email" class="form-control form-rounded" name="Email" id="RegisterInputEmail" placeholder="{{'register.p7' | translate}}" [(ngModel)]="model.email">
+            <p class="errorMsg">{{errEm}}</p>
+        </div>
+
+        <!-- Username -->
+        <div class="mb-3 form-control-md">
+            <label for="RegisterInputUsername" class="form-label user-select-none">{{'register.p8' | translate}}:</label>
+            <input type="text" class="form-control form-rounded" name="Username" id="RegisterInputUsername" placeholder="{{'register.p9' | translate}}" [(ngModel)]="model.username">
+            <p class="errorMsg">{{errUn}}</p>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3 form-control-md">
+            <label for="RegisterInputPassword" class="form-label user-select-none">{{'register.p10' | translate}}:</label>
+            <input type="password" class="form-control form-rounded" name="Password" id="RegisterInputPassword" placeholder="{{'register.p11' | translate}}" [(ngModel)]="model.password">
+            <p class="errorMsg">{{errPa}}</p>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-5 form-control-md">
+            <label for="RegisterInputConfPassword" class="form-label user-select-none">{{'register.p12' | translate}}:</label>
+            <input type="password" class="form-control form-rounded" name="checkPassword" id="RegisterInputConfPassword" placeholder="{{'register.p13' | translate}}" [(ngModel)]="model.checkpassword">
+            <p class="errorMsg">{{errCpa}}</p>
+        </div>
+
+
+        <div class="container-fluid mb-4 mt-5 p-0">
+
+          <div class="row d-flex justify-content-center g-0">
+              <div class="col-md-12 d-flex justify-content-center mb-3">
+                <button type="submit" class="btn btn-primary col-md-12 col-sm-12 col-xs-12">{{'register.p14' | translate}}</button>
+              </div>
+          </div>
+
+      </div>
+
+        <bR>
+        <div class="separator container align-content-center justify-content-center mt-2">
+
+            <h5><span>{{'register.p15' | translate}}</span></h5>
+
+        </div>
+
+
+
+        <div class="d-flex justify-content-center mt-2">
+            <div class="row">
+                <div class="col">
+                    <div class="g-signin2 " data-onsuccess="onSignIn">
+
+                        <!-- <button (click)="signIn()">
+                            Sign in with Google
+                        </button> -->
+                        <cool-google-button color="dark" (click)="signIn()">
+                          {{'register.p16' | translate}}
+                        </cool-google-button>
+                          <!-- <div *ngIf="showSpinner" style="position: absolute; margin: auto;">
+                            <app-spinner></app-spinner>
+                          </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+

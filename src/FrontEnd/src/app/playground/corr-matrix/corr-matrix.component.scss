@@ -1,0 +1,43 @@
+.YAxisMarker{
+  background-color: #212529;
+  color: white;
+}
+
+table{
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: 600px;
+  max-width: 600px;
+}
+
+
+.is-strongPostive
+{
+  background-color: red;
+}
+
+.is-mediumPostive
+{
+  background-color: rgb(251, 63, 63);
+}
+
+
+.is-uncorellatedPositive
+{
+  background-color: rgb(243, 156, 156);
+}
+
+.is-uncorellatedNegative
+{
+  background-color: rgb(151, 151, 235);
+}
+
+.is-mediumNegative
+{
+  background-color: rgb(101, 101, 217);
+}
+
+.is-strongNegative
+{
+  background-color: blue;
+}

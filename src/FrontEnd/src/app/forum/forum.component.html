@@ -1,0 +1,95 @@
+
+<div class="siteContainer container mt-5 mb-5 pb-4 rounded shaded">
+
+  <div class="d-flex justify-content-center pt-5 text-center">
+    <h4 class="Titles" style="user-select: none;  font-size: 25px;"><b>{{'forum.p1' | translate}}</b>
+    </h4>
+  </div>
+  <div class="d-flex justify-content-center text-center">
+    <h4 class="Titles" style="user-select: none; font-size: 25px;"><b>{{'forum.p2' | translate}}</b></h4>
+  </div>
+
+  <div class="row justify-content-center mt-5 ps-3 pe-2 g-0">
+
+    <div class="innerSiteContainer col-md-10">
+      <div class="d-flex justify-content-center mb-3" *ngIf="accountService.curentUser$ | async">
+          <button class="btn btn-primary col-md-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapseASK" aria-expanded="false" aria-controls="collapseExample">
+            {{'forum.p3' | translate}}
+          </button>
+      </div>
+      <form [formGroup]="topicForm" (ngSubmit)="submit()" *ngIf="accountService.curentUser$ | async" class="collapse" id="collapseASK">
+        <input type="hidden" [(ngModel)]="curUsr" formControlName="userID" />
+        <div class="innerSiteContainer row pt-3">
+
+          <div class="input-group mb-1 col-sm-12">
+            <input type="text" class="form-control col-sm-12" formControlName="title" placeholder="{{'forum.p4' | translate}}" maxlength="255">
+
+          </div>
+          <div class="mb-3 col-sm-12" style="text-align: right;min-height: 25px;">{{titlErrMsg}}</div>
+          <div class="input-group mb-3 col-sm-12">
+            <textarea id="textArea" type="text" class="form-control col-sm-12 rounded" formControlName="description"
+              placeholder="{{'forum.p5' | translate}}" rows="10" maxlength="4096"></textarea>
+              <div class="mt-1 col-sm-12" style="text-align: right;min-height: 25px;">{{descErrMsg}}</div>
+          </div>
+          <div class="col-sm-12 text-center mb-3">
+            <button type="submit" class="btn btn-primary" style="height: 38px;" onclick="">{{'forum.p6' | translate}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row mt-5 justify-content-center">
+    <div class="col-md-10 ms-3">
+      <h5 class="Titles" style="user-select: none; padding-bottom:10px; margin-right: 15px; border-bottom: 1px solid gray;">{{'forum.p7' | translate}}</h5>
+      <span *ngIf="this.forum.topics.length === 0">{{'script1.p4' | translate}}</span>
+    </div>
+  </div>
+
+  <div class="container px-4">
+
+    <div class="row mt-3 justify-content-center mb-5">
+      <div class="Qitem col-md-10 p-3 shadow-sm hover-overlay m-2 rounded" *ngFor="let topic of this.forum.topics">
+        <div id="ForumItems" style="overflow-wrap: break-word;" routerLink="/forum/topic/{{topic.id}}">{{topic.title}}
+          <div style="float: right;">
+            <span class="authors">by {{topic.autor}}</span>
+            <span class="deleteBtn ps-3" *ngIf="(topic.userID==curUsr) || isAdmin" id="{{topic.id}}" (click)="$event.stopPropagation()" data-bs-toggle="modal" attr.data-bs-target="#modal{{topic.id}}">
+
+                <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                <path fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+              </svg>
+
+            </span>
+          </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal{{topic.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalContainer">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{'forum.p8' | translate}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'forum.p9' | translate}}</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="{{topic.id}}" (click)="deleteTopic($event)">{{'forum.p10' | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!--
+
+
+<button (click)="testtt()">Test</button> -->

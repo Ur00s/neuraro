@@ -1,0 +1,29 @@
+<div class="container-fluid p-2" style="padding: 0;">
+
+    <div class="col-md-12 pe-0">
+      <div class="container-fluid rounded p-3"
+        [class.innerSiteContainerTopic]="this.ann.hasData() === true"
+        [class.shadow]="this.ann.hasData() === true">
+        <div class="innerSiteContainerTopic p-3 d-flex justify-content-center" >
+          <!-- <app-spinner></app-spinner> -->
+        </div>
+        <div class="row" *ngIf="this.ann.hasData() === true">
+          <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+            <canvas class="rounded p-1 shadow innerSiteContainer" baseChart #chart1 [data]="data1" [type]="'line'"
+              [options]="newChartOptionsLoss">
+            </canvas>
+          </div>
+
+          <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+            <canvas class="rounded p-1 shadow innerSiteContainer" baseChart #chart2 [data]="data2" [type]="'line'"
+              [options]="newChartOptionsMSE">
+            </canvas>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>

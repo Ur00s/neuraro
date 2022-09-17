@@ -1,0 +1,40 @@
+
+<div class="column mytable d-flex justify-content-center">
+  <div class="container-fluid px-0">
+    <table class="table mx-auto">
+      <thead>
+        <tr>
+          <th>
+
+          </th>
+          <th *ngFor="let col of this.dataColumns" style="border-right: 1px solid white; padding-right: 5px;">
+            {{col}}
+          </th>
+        </tr>
+      </thead>
+      <tbody >
+       <tr *ngFor="let element of this.concatedDataAndCols">
+          <td class="YAxisMarker">{{element.col}}</td>
+          <td
+          *ngFor="let item of element.data"
+          [ngClass]="{
+            'is-strongPostive': item >= 0.7 && item <= 1 ,
+
+            'is-mediumPostive': item >= 0.4 && item <= 0.7 ,
+
+            'is-uncorellatedPositive': item <= 0.4 && item >= 0 ,
+
+            'is-uncorellatedNegative': item < 0 && item >= -0.4 ,
+
+            'is-mediumNegative': item <= -0.4 && item >= -0.7 ,
+
+            'is-strongNegative': item <= -0.7 && item >= -1
+          }"
+          >{{item.toFixed(2)}}</td>
+        </tr>
+      </tbody>
+
+
+    </table>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+<div class="container-fluid px-5" *ngIf="this.table.getShowTable()">
+  <div class="row d-flex justify-content-center mt-4">
+
+    <div class="col-md-3 p-3 px-1 innerSiteContainer rounded me-3 mt-3">
+      <app-feature-selection></app-feature-selection>
+    </div>
+
+
+    <div class="col-md-5 p-3 px-1 innerSiteContainer rounded me-3 mt-3">
+
+      <div  class=" px-4 py-2">
+        <div>
+          <select class="form-control form-select mb-2" (change)="this.pearsonKendallChange()" style="width: 50%;">
+            <option>{{'playground.p51' | translate}}</option>
+            <option>{{'playground.p52' | translate}}</option>
+          </select>
+        </div>
+        <div style="overflow: auto;">
+          <app-corr-matrix [kendalPearsonChange]="this.pearsonOrKendall"  data-bs-toggle="modal" data-bs-target="#exampleModal" title="Click to expand"></app-corr-matrix>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-10 offset-md-1 text-center">
+        <span class="Titles" style="user-select: none;">{{'playground.p44' | translate}}</span>
+      </div>
+      <div class="col-md-10 offset-md-1" style="height: 78vh; overflow-x: hidden; overflow-y: auto;">
+        <div *ngFor="let input of this.table.encodings" class="d-flex justify content center">
+          <table class="table mb-2 border">
+            <tbody>
+              <tr class="evenTD">
+                <td class="myHeaderWidth text-center align-middle">
+                  {{input.columnName}}
+                </td>
+                <td style="width: 300px;">
+                  <select class="form-control form-select inputParameters border" name="" id="" (change)="setEncodingForColumn($event, input.columnName)">
+                    <option value="labelencoder">{{'playground.p45' | translate}}</option>
+                    <option value="onehotencoder">{{'playground.p46' | translate}}</option>
+                    <option selected value="binaryencoder">{{'playground.p47' | translate}}</option>
+                  </select>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> -->
+    </div>
+    <div class="col-md-3 rounded innerSiteContainer mt-3">
+      <div class=" rounded px-4 py-2">
+
+
+        <!-- <div class="text-center d-grid mt-3 mb-3">
+          <button class="btn btn-primary btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            {{'playground.p42' | translate}}
+          </button>
+        </div> -->
+
+        <!-- <div class="text-center d-grid mt-3 mb-3">
+          <button class="btn btn-primary btn-block" type="button" data-bs-toggle="modal" data-bs-target="#featureSelection">
+            {{'playground.p43' | translate}}
+          </button>
+        </div> -->
+
+
+
+        <div class="outputParametarVH col-md-12">
+          <div class="col-md-12 text-center col-sm-12">
+            <span class="Titles" style="user-select: none;">{{'playground.p48' | translate}}</span>
+          </div>
+          <select style="width: 100%; border-radius: 3px;" class="form-select form-control mb-2"
+            (change)="selectOutput($event)" *ngIf="this.table.getShowTable()">
+            <option disabled>{{'playground.p50' | translate}}</option>
+            <ng-container *ngFor="let res of this.table.data.columns;index as i;">
+              <option *ngIf="checkIfSelected(res)" [value]="res" [selected]="((this.table.output=='')?(i==this.table.data.columns.length-1):(res==this.table.output))">{{res}}</option>
+            </ng-container>
+          </select>
+          <!-- <app-fill-values (dataChangedEvent)="refreshData($event)"></app-fill-values> -->
+        </div>
+
+        <div class="col-md-12 text-center col-sm-12 mt-2">
+          <span class="Titles" style="user-select: none;">{{'playground.p41' | translate}}</span>
+        </div>
+
+        <div style="overflow-x: hidden; overflow-y: auto;">
+          <table class="table table-striped table-bordered" style="border: 1px solid var(--text-color);">
+            <tbody>
+
+              <tr *ngFor="let res of this.table.data.columns;index as i;">
+                <td>{{ res }}</td>
+                <td class="text-center"><input style="width: 20px; height: 20px;" type="checkbox" name="inputs"
+                    id="input{{i}}" (change)="addToInputs($event,res)" [value]="res" [checked]="((this.table.inputs.length==0)?(false):(this.table.inputs.includes(res)))"></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header d-flex">
+          <div class="col-md-6">
+          <!-- <select class="form-control form-select" (change)="this.pearsonKendallChange()" style="width: 50%;">
+            <option>{{'playground.p51' | translate}}</option>
+            <option>{{'playground.p52' | translate}}</option>
+          </select> -->
+          <ng-container *ngIf="this.pearsonOrKendall">
+            {{'playground.p51' | translate}}
+          </ng-container>
+          <ng-container *ngIf="!this.pearsonOrKendall">
+            {{'playground.p52' | translate}}
+          </ng-container>
+        </div>
+          <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0" >
+          <app-corr-matrix [kendalPearsonChange]="this.pearsonOrKendall"></app-corr-matrix>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal za FEATURE SELECTION -->
+<!-- <div class="modal fade" id="featureSelection" tabindex="-1" aria-labelledby="featureSelectionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-center user-select-none">
+        <h5>{{'playground.p53' | translate}}</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" >
+        <app-feature-selection></app-feature-selection>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div> -->
+
+

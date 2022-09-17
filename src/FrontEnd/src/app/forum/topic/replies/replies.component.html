@@ -1,0 +1,74 @@
+<div class="col-md-12 col-sm-12">
+  <div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 text-justify shadow rounded p-3 mt-2 innerSiteContainerTopic"
+    *ngFor="let rep of this.reply">
+
+
+      <div class="p-3 text-justify innerSiteContainerTopic" style="overflow-wrap: break-word;">
+        <span style="float: left; font-size: 10px;">{{'replies.p1' | translate}}<span
+            style="color: var(--button-color);">{{Parent.autor}}</span>{{'replies.p2' | translate}}</span>
+        <span><a *ngIf="rep.isEditing==false || rep.EdditTogle==false"><br>{{rep.comment}}</a><input
+            (keyup)="editCommentCheck($event)" class="inputClass form-control p-2 rounded" type="text" id="inp{{rep.id}}"
+            *ngIf="rep.isEditing==true && rep.EdditTogle==true" value="{{rep.comment}}" maxlength="1024" /></span>
+
+        <span class="deleteBtn ps-3" *ngIf="curUsr==rep.userID && (rep.isEditing==false || rep.EdditTogle==false)"
+        data-bs-toggle="modal" attr.data-bs-target="#modalr{{rep.id}}" id="{{rep.id}}">
+          <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+            <path fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+          </svg>
+        </span>
+        <span class="editBtn" *ngIf="curUsr==rep.userID && (rep.isEditing==false || rep.EdditTogle==false)"
+          (click)="editComOpen($event)" id="{{rep.id}}">
+          <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path
+              d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+          </svg>
+        </span>
+
+      </div>
+
+
+      <div class="col-md-12 col-sm-12">
+        <span class="mt-2 me-3 authors" style="font-size:14px; float: right; user-select: none;"
+          *ngIf="rep.isEditing==false || rep.EdditTogle==false">{{rep.autor}}</span>
+
+          <div class="row me-2">
+            <div class="editBtn d-flex justify-content-end" *ngIf="rep.isEditing==true && rep.EdditTogle==true">
+              <button class="btn btn-primary me-2" type="button" id="{{rep.id}}" (click)="editCom($event)"
+                [disabled]="EditCommetCheckToggle==false">{{"admin-panel.Edit" | translate}}</button>
+              <button class="btn btn-primary" type="button" id="{{rep.id}}" (click)="cancelEdit($event)">{{"forum.p9" | translate}}</button>
+            </div>
+          </div>
+
+        <div *ngIf="(rep.isEditing==false || rep.EdditTogle==false) && (accountService.curentUser$ | async)">
+          <i (click)="LD($event)" id="{{rep.id}}" class="likeButton fa fa-thumbs-up ms-3"
+            [ngClass]="rep.lClass"></i>&nbsp;&nbsp;
+          <span class="Titles" style="user-select: none; font-size: medium;">{{rep.likes}}</span>
+        </div>
+        <div *ngIf=" (accountService.curentUser$ | async)===null">
+          <i class="likeButton fa fa-thumbs-up ms-3"></i>&nbsp;&nbsp;
+          <span class="Titles" style="user-select: none; font-size: medium;">{{rep.likes}}</span>
+        </div>
+        <div class="modal fade" id="modalr{{rep.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalContainer">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{"forum.p8" | translate}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{"forum.p9" | translate}}</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="{{rep.id}}" (click)="deleteCom($event)">{{"forum.p10" | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</div>

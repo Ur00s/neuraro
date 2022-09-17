@@ -1,0 +1,167 @@
+<div class="siteContainer container mt-5 mb-5 rounded shaded">
+  <div class="row p-2">
+    <div class="col-md-6 divWBorder">
+      <div class="pt-5 text-center mb-5">
+        <h4 class="Titles" style="user-select: none;  font-size: 25px;"><b>{{'playground.p8' | translate}}</b>
+        </h4>
+        <div class="">
+          <h6>{{'playground.p64' | translate}}</h6>
+        </div>
+        <div *ngIf="showUploadSpinner" class="mt-5" style="position: absolute; margin: auto;">
+          <!-- <app-spinner></app-spinner> -->
+        </div>
+        
+      </div>
+      
+      <div class="container px-4" style="height: 40vh; overflow-y: auto ;">
+        <div class="row justify-content-center mb-5">
+
+          <div class="col-md-10 p-0 mt-3 mb-3">
+            <form style="background-color: transparent;" [formGroup]="myForm" (ngSubmit)="submit()" >
+            <div class="input-group">
+              <input class="form-control col-md-10" data-max-size="2048" formControlName="file" id="file" type="file" accept=".csv"
+                (change)="onFileChange($event)">
+
+            </div>
+          </form>
+          </div>
+
+          <div class="col-md-10 p-3 m-2 text-center" *ngIf="this.files.length == 0">
+            {{'playground.p65' | translate}}
+          </div>
+
+          <div *ngFor="let file of this.files" class="p-0 d-flex justify-content-center">
+
+          <div class="Qitem col-md-10 col-sm-12 p-3 m-2 shadow-sm rounded">
+
+            <div id="projectItems" style="overflow-wrap: break-word;">
+              <span>{{file.fileName}}</span>
+
+              <div style="float: right;">
+                <span class="deleteBtn ps-3" id="{{file.id}}" (click)="$event.stopPropagation()" data-bs-toggle="modal" attr.data-bs-target="#modal2{{file.id}}">
+                  <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                      d="M14.5 3a1  1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="modal fade" id="modal2{{file.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content modalContainer">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">{{'forum.p8' | translate}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'forum.p9' | translate}}</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="{{file.id}}" (click)="deleteFile($event)">{{'forum.p10' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+
+          <!-- <button type="button" class="btn btn-primary col-10 col-md-10 col-sm-12 p-3 mt-2" data-bs-toggle="modal" data-bs-target="#uploadFileModal">
+            {{'playground.p11' | translate}}
+          </button> -->
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-6" >
+      <div class="pt-5 text-center mb-5">
+        <div>
+        <h4 class="Titles" style="user-select: none;  font-size: 25px;"><b>{{'playground.p12' | translate}}</b>
+        </h4>
+      </div>
+      <div class="">
+        <h6>{{'playground.p66' | translate}}</h6>
+      </div>
+      </div>
+
+      <div class="container px-4" style="height: 40vh; overflow-y: auto ;">
+
+        <div class="row  justify-content-center mb-5 ">
+          <div class="col-md-10 p-3 m-2 text-center" *ngIf="this.experiments.length == 0">
+            {{'playground.p67' | translate}}
+          </div>
+
+          <div class="Qitem col-md-10 p-3 shadow-sm hover-overlay m-2 rounded"  *ngFor="let exp of experiments">
+            <div  routerLink="/predictions/{{exp.id}}" id="projectItems" style="overflow-wrap: break-word;" title="{{ exp.description }}">
+              <span>{{ exp.name }}</span>
+              <div style="float: right;">
+                <span class="deleteBtn ps-3" id="{{exp.id}}" (click)="$event.stopPropagation()" data-bs-toggle="modal" attr.data-bs-target="#modal3{{exp.id}}">
+                  <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                    <path fill-rule="evenodd"
+                      d="M14.5 3a1  1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+                  <!-- modal za brisanje eksperimenta -->
+          <div class="modal fade" id="modal3{{exp.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content modalContainer">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">{{'forum.p8' | translate}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                  <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'forum.p9' | translate}}</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="{{exp.id}}" (click)="deleteExperiment($event)">{{'forum.p10' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- <button #modalButton  type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" hidden>
+  Launch
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-body text-danger" style="font-size: xx-large; font-weight: bolder;">
+          {{errorMessage}}
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'forum.p9' | translate}}</a>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,175 @@
+<div class="siteContainer container mt-5 mb-5 px-5 pb-5 pt-2 rounded shaded">
+    <div class="py-3">
+      <a routerLink="/forum" style="text-decoration: none"><svg style="margin-top: -4px;"
+          xmlns="http://www.w3.org/2000/svg" width="26" height="25" fill="currentColor" class="bi bi-arrow-left"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+        </svg> {{'topic.p1' | translate}}</a>
+    </div>
+
+    <div class="mb-3">
+
+      <span class="Titles" style="user-select: none; font-size:25px;">{{'topic.p2' | translate}}</span>
+      <div *ngFor="let topic of this.forum.topics">
+        <div *ngIf="topic.id==this.topicID">
+          <span style="font-size:12px; font-size: small; user-select: none;"> &nbsp; by {{topic?.autor}}</span>
+          <span class="editBtn" *ngIf="topic?.userID==curUsr && topic?.isEditing==false" (click)="editTopic()">
+            <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil"
+              viewBox="0 0 16 16">
+              <path
+                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+            </svg>
+          </span>
+          <div class="editBtn" *ngIf="topic?.isEditing==true">
+            <button class="btn btn-primary me-2" type="button" (click)="editTopicChange()">{{"admin-panel.Edit" | translate}}</button>
+            <button class="btn btn-primary" type="button" (click)="cancelTopicEditing()">{{"forum.p9" | translate}}</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="innerSiteContainerTopic shadow-sm rounded">
+
+      <div *ngFor="let topic of this.forum.topics">
+        <div *ngIf="topic.id==this.topicID">
+          <div class="p-4" style="overflow-wrap: break-word;">
+            <span style="font-size: large;"><b>{{topic.title}}</b></span>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let topic of this.forum.topics">
+        <div *ngIf="topic.id==this.topicID">
+          <div class="p-4" style="word-wrap: break-word; white-space: pre-wrap;"><span *ngIf="topic?.isEditing==false">{{topic.description}}</span><textarea id="txta" *ngIf="topic?.isEditing==true" type="text" class="teksterija form-control col-sm-12 rounded" rows="10" maxlength="4096">{{topic?.description}}</textarea></div>
+          <div class="p-4" style="text-align: right; min-height: 25px;">{{noBodyErr}}</div>
+      <!-- <div class="p-4">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. In recusandae, ea consequuntur illum similique quas culpa natus, iure mollitia, quam odit fugiat ratione maxime. Deserunt provident voluptatibus accusamus porro quo. <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente officia provident, aperiam accusamus saepe alias corporis soluta pariatur non quibusdam, rem minus expedita iste veritatis ad. Architecto ratione dolor necessitatibus.
+      </div> -->
+        </div>
+      </div>
+
+    </div>
+    <div class="mt-5 mb-3 p-0 Titles" style="font-size:25px; user-select: none;">{{'topic.p3' | translate}}</div>
+    <div class="container mt-2 p-3">
+      <div class="row">
+        <div class="col-md-12 p-0">
+          <form [formGroup]="commentForm" *ngIf="accountService.curentUser$ | async" (ngSubmit)="submit()" >
+            <div class="row">
+              <div class="input-group mb-3 col-sm-12">
+                <input type="text" class="form-control innerSiteContainerTopic" formControlName="comment" placeholder="{{'topic.p4' | translate}}" maxlength="1024">
+                <button type="submit" class="btn btn-primary" style="height: 38px;" onclick="" [disabled]="commentForm.value.comment.length==0">{{'topic.p5' | translate}}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div *ngFor="let commentss of this.forum.AllComets!">
+
+        <div *ngIf="commentss.topicid==this.topicID">
+          <p *ngIf="commentss.comments.length === 0">{{nocomments}}</p>
+      <div class="comment mb-3" *ngFor="let comment of commentss.comments">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-justify shadow rounded p-3 innerSiteContainerTopic">
+            <div class="p-3 text-justify" style="overflow-wrap: break-word;">
+              <span><span *ngIf="comment.isEditing==false || comment.EdditTogle==false">{{comment.comment}}</span><input (keyup)="editCommentCheck($event)" class="inputClass form-control p-2 rounded" type="text" id="inp{{comment.id}}" *ngIf="comment.isEditing==true && comment.EdditTogle==true" value="{{comment.comment}}" maxlength="1024"/></span>
+              <span class="deleteBtn ps-3" *ngIf="curUsr==comment.userID && (comment.isEditing==false || comment.EdditTogle==false)" data-bs-toggle="modal" attr.data-bs-target="#modalTopic{{comment.id}}">
+                <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                  <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                </svg>
+              </span>
+              <span class="editBtn" *ngIf="curUsr==comment.userID && (comment.isEditing==false || comment.EdditTogle==false)" (click)="editComOpen($event)" id="{{comment.id}}">
+                <svg style="z-index: -1;pointer-events: none;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                </svg>
+
+              </span>
+
+              <!-- Reply Dugme - Vezati za formu za dodavanje odgovora na komentar. Kada se klikne reply, da tek tad izadje -->
+              <span class="editBtn me-3" type="button" data-bs-toggle="collapse" attr.data-bs-target="#reply{{comment.id}}" *ngIf="(accountService.curentUser$ | async) && (comment.isEditing==false || comment.EdditTogle==false)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                  <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/>
+                </svg>
+             </span>
+
+
+
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+              <span class="mt-2 me-3 authors" style="font-size:14px; float: right; user-select: none;" *ngIf="comment.isEditing==false || comment.EdditTogle==false">{{comment.autor}}</span>
+
+                <div class="editBtn me-3 innerSiteContainerTopic" *ngIf="comment.isEditing==true && comment.EdditTogle==true">
+                  <button class="btn btn-primary me-2" type="button" id="{{comment.id}}" (click)="editCom($event)" [disabled]="EditCommetCheckToggle==false" >{{"admin-panel.Edit" | translate}}</button>
+                  <button class="btn btn-primary" type="button" id="{{comment.id}}" (click)="cancelEdit($event)">{{"forum.p9" | translate}}</button>
+                </div>
+
+                <div *ngIf="(comment.isEditing==false || comment.EdditTogle==false) && (accountService.curentUser$ | async)">
+                  <i (click)="LD($event)" id="{{comment.id}}" class="likeButton fa fa-thumbs-up ms-3"
+                    [ngClass]="comment.lClass" ></i>&nbsp;&nbsp;
+                  <span class="Titles"
+                    style="user-select: none; font-size: medium;">{{comment.likes}}</span>
+                </div>
+                <div *ngIf=" (accountService.curentUser$ | async)===null">
+                  <i class="likeButton fa fa-thumbs-up ms-3" ></i>&nbsp;&nbsp;
+                  <span class="Titles" style="user-select: none; font-size: medium;">{{comment.likes}}</span>
+                </div>
+            </div>
+
+            <!-- View replies dugme. Da se poveze da se odgvori otvraju nakon klika -->
+            <div class="row mt-1" *ngIf="comment.isEditing==false || comment.EdditTogle==false">
+              <span class="Titles" id="btnrep{{comment.id}}" style="user-select: none; font-size: 10px; display: flex; justify-content: center;" type="button" data-bs-toggle="collapse" attr.data-bs-target="#reply{{comment.id}}">{{'topic.p6' | translate}} ({{comment.Replies?.length}})</span>
+            </div>
+          </div>
+
+          <!-- Forma za dodavanje odgovora na komentar -->
+          <div id="reply{{comment.id}}" class="collapse">
+          <form [formGroup]="ReplycommentForm" *ngIf="accountService.curentUser$ | async" (ngSubmit)="Replysubmit($event)" id="{{comment.id}}">
+            <div class="row mt-3">
+              <div class="input-group mb-3 col-sm-12 p-0">
+                <input type="text" formControlName="comment"  class="form-control innerSiteContainerTopic" placeholder="{{'topic.p7' | translate}}" maxlength="1024">
+                <button type="submit" class="btn btn-primary" style="height: 38px;" [disabled]="this.ReplycommentForm.value.comment?.length==0">{{"topic.p5" | translate}}</button>
+              </div>
+            </div>
+          </form>
+            <app-replies
+            [reply]="comment.Replies"
+            [Parent]="comment"
+            [curUsr]="this.curUsr"
+            (emitReplies)="GetReplies($event,comment.position)"
+            (emitDelete)="DeleteReplies($event,comment.position)"
+            ></app-replies>
+          </div>
+
+
+        </div>
+        <div class="modal fade" id="modalTopic{{comment.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalContainer">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{"forum.p8" | translate}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{"forum.p9" | translate}}</button>
+                <button type="button" class="btn btn-danger"  id="{{comment.id}}" (click)="deleteCom($event)" data-bs-dismiss="modal">{{"forum.p10" | translate}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>

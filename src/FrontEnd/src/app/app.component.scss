@@ -1,0 +1,32 @@
+.bg-success {
+    background-color: #51c375 !important;
+}
+
+.bg-danger {
+    background-color: #c24d4d !important;
+}
+.bg-warning{
+    background-color: rgb(255, 255, 108) !important;
+}
+
+.positioned{
+    position: absolute;
+    top: 0;
+    left: 98vw;
+    margin: 0px;
+    padding: 0px;
+    z-index: 1;
+}
+.positioned i{
+    margin: 0px;
+    padding: 0px;
+}
+
+.inner{
+    background-color: rgb(65, 153, 235);
+}
+.offcanvasClass{
+    position: absolute;
+    bottom: 0px;
+    margin-left: 48.5%;
+}

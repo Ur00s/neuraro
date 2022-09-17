@@ -1,0 +1,360 @@
+<form [formGroup]="neuralNetworkModel" (ngSubmit)="WebService()" name="myForm" class="innerSiteContainerTopic">
+    <div class="container-fluid mt-4 p-2 col-md-11 innerSiteContainer" style="overflow-x: hidden;">
+      <div class="row ms-1">
+        <div class="col-md-2 col-sm-12 p-0 text-center">
+          <button [disabled]="this.ann.getInProgress()" id="trainButton" class="btn btn-primary mx-auto col-md-12 shadow" type="submit">{{'playground.p22' | translate}}</button>
+          <!-- <div class="container">
+                      <div class="row">
+                          <div class="col-md-12">
+
+                          </div>
+                      </div>
+                  </div> -->
+        </div>
+        <div class="col-md-10 col-sm-12">
+          <div class="container-fluid shadow p-3 rounded">
+            <div class="row">
+              <div class="col-md-3">
+                <label for="LearningRate">{{'playground.p23' | translate}}</label>
+                <!-- <select class="form-control form-select form-select-sm inputParameters" name=""
+                  formControlName="learningRate" id="LearningRateSelect" [(ngModel)]="LearningRate">
+                  <option value="0.00001" selected="selected">0.00001</option>
+                  <option value="0.0001">0.0001</option>
+                  <option value="0.001">0.001</option>
+                  <option value="0.003">0.003</option>
+                  <option value="0.01">0.01</option>
+                  <option value="0.03">0.03</option>
+                  <option value="0.1">0.1</option>
+                  <option value="0.3">0.3</option>
+                  <option value="1">1</option>
+                  <option value="3">3</option>
+                  <option value="10">10</option>
+                </select> -->
+
+                  <input
+                    class="form-control inputParameters form-control-sm"
+                    formControlName="learningRate"
+                    type="text"
+                    inputmode="numeric"
+                    name=""
+                    id="LearningRate"
+                    [(ngModel)]="this.model.LearningRate"
+                    min="0"
+                    #popLearning = "ngbPopover"
+                    ngbPopover="Value must be beetwen 0 and 10"
+                    triggers="manual"
+                    placement="bottom"
+                    (keyup)="checkLearning(popLearning,$event)"
+                  />
+
+              </div>
+
+
+
+              <div class="col-md-3">
+                <label for="RegSelect"> {{'playground.p24' | translate}} </label>
+                <select formControlName="regularization" class="form-control form-select inputParameters form-select-sm" name="" id="RegSelect" (change)="RegularizationChange($event)">
+                  <option value="none" [selected]="this.model.Regularization=='none'">{{'playground.p26' | translate}}</option>
+                  <option value="L1" [selected]="this.model.Regularization=='L1'">{{'playground.p27' | translate}}</option>
+                  <option value="L2" [selected]="this.model.Regularization=='L2'">{{'playground.p28' | translate}}</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="RegRate">{{'playground.p25' | translate}}</label>
+                <!-- <select class="form-control form-select inputParameters form-select-sm"
+                  [(ngModel)]="RegularizationRate" name="" id="RegRateSelect" formControlName="regularizationRate">
+                  <option value="0">0</option>
+                  <option value="0.001">0.001</option>
+                  <option value="0.003">0.003</option>
+                  <option value="0.01">0.01</option>
+                  <option value="0.03">0.03</option>
+                  <option value="0.1">0.1</option>
+                  <option value="0.3">0.3</option>
+                  <option value="1">1</option>
+                  <option value="3">3</option>
+                  <option value="10">10</option>
+                </select> -->
+                <input class="form-control inputParameters form-control-sm"
+                  formControlName="regularizationRate"
+                  type="text"
+                  inputmode="numeric"
+                  name=""
+                  id="RegRate"
+                  [(ngModel)]="this.model.RegularizationRate"
+                  min="0"
+                  #popRegRate = "ngbPopover"
+                  ngbPopover="Value must be beetwen 0 and 10"
+                  triggers="manual"
+                  (keyup)="checkRegRate(popRegRate,$event)"
+                  placement="bottom"
+                  [readonly]="this.disableRegInput"
+                  [class.disabledInput]="this.disableRegInput"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="probSelect"> {{'playground.p63' | translate}} </label>
+                <select name="" id="probSelect" class="form-control form-select inputParameters form-select-sm" formControlName="problemType" [(ngModel)]="this.model.ProblemType" (change)="setProblemType($event)">
+                  <option value="regression">Regression</option>
+                  <option value="classification">Classification</option>
+                </select>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <button class="btn btn-primary btn-sm col-md-12 col-sm-12 mt-2 mx-auto" id="advButton" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+                aria-controls="collapseExample">
+                Advanced options and layers
+              </button>
+            </div> -->
+
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12 ms-auto">
+        <div class=" container-fluid rounded px-0 py-3 m-0 ">
+          <div>
+            <div class="innerSiteContainer card card-body border-0 p-1">
+              <div class="container-fluid ">
+                <div class="row ">
+                  <div class="innerSiteContainer col-md-2 rounded border shadow mb-5 d-flex align-items-center">
+                    <div class="col-md-6 w-100">
+
+                      <div class="">
+                        <label for="DropoutSelect">{{'playground.p29' | translate}}</label>
+                        <select formControlName="dropout" [(ngModel)]="Dropout" (change)="DropoutChange($event)"
+                          class="form-control form-select inputParameters form-select-sm mb-3" name=""
+                          id="DropoutSelect">
+                          <option value="0" [selected]="this.model.Dropout=='0'">0%</option>
+                          <option value="0.1" [selected]="this.model.Dropout=='0.1'">10%</option>
+                          <option value="0.2" [selected]="this.model.Dropout=='0.2'">20%</option>
+                          <option value="0.3" [selected]="this.model.Dropout=='0.3'">30%</option>
+                          <option value="0.4" [selected]="this.model.Dropout=='0.4'">40%</option>
+                          <option value="0.5" [selected]="this.model.Dropout=='0.5'">50%</option>
+                          <option value="0.6" [selected]="this.model.Dropout=='0.6'">60%</option>
+                          <option value="0.7" [selected]="this.model.Dropout=='0.7'">70%</option>
+                          <option value="0.8" [selected]="this.model.Dropout=='0.8'">80%</option>
+                          <option value="0.9" [selected]="this.model.Dropout=='0.9'">90%</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="Momentum">Momentum</label>
+                        <!-- <select formControlName="momentum" [(ngModel)]="Momentum"
+                          class="form-control form-select inputParameters form-select-sm mb-3" name=""
+                          id="MomentumSelect">
+                          <option value="0">0</option>
+                          <option value="0.1">0.1</option>
+                          <option value="0.2">0.2</option>
+                          <option value="0.3">0.3</option>
+                          <option value="0.4">0.4</option>
+                          <option value="0.5">0.5</option>
+                          <option value="0.6">0.6</option>
+                          <option value="0.7">0.7</option>
+                          <option value="0.8">0.8</option>
+                          <option value="0.9">0.9</option>
+                          <option value="0.95">0.95</option>
+                          <option value="0.99">0.99</option>
+                          <option value="0.999">0.999</option>
+                        </select> -->
+                        <input class="form-control inputParameters form-control-sm mb-3"
+                          formControlName="momentum"
+                          type="text"
+                          inputmode="numeric"
+                          name=""
+                          id="Momentum"
+                          [(ngModel)]="this.model.Momentum"
+                          min="0"
+                          #popMomentum = "ngbPopover"
+                          ngbPopover="Value must be beetwen 0 and 1"
+                          triggers="manual"
+                          (keyup)="checkMomentum(popMomentum,$event)"
+                          placement="bottom"
+                          step="0.01"
+                          [readonly]="this.disableMomentumInput"
+                          [class.disabledInput]="this.disableMomentumInput"
+                        />
+
+
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="PreventLossSelect">{{'playground.p30' | translate}}</label>
+                        <select formControlName="preventLoss" [(ngModel)]="this.model.PreventLoss" (change)="PreventLossChange($event)"
+                          class="form-control form-select inputParameters form-select-sm mb-3" name=""
+                          id="PreventLoss">
+                          <option value="true">{{'playground.p31' | translate}}</option>
+                          <option value="false">{{'playground.p32' | translate}}</option>
+                        </select>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="col-md-8 p-0 mb-5">
+                    <div class="container-fluid rounded">
+
+                      <div class="mb-0">
+
+                        <div class="d-flex justify-content-center mb-1 ">
+
+                          <div class="container -fluid">
+                            <div class="row d-flex justify-content-center">
+                              <div class="col-md-8 d-flex justify-content-center">
+                                <p class="text-center my-auto mx-3 user-select-none">{{'playground.p33' | translate}}: {{this.model.numLayers}}
+                                </p>
+                                <div class="row">
+                                  <div class="col pr-1 mr-1">
+                                    <button class="btn btn-danger" type="button"
+                                    (click)="removeLayer()"><span><b>-</b></span></button>
+                                  </div>
+
+                                  <div class="col p-0">
+                                    <button class="btn btn-primary ml-3" type="button"
+                                    (click)="addLayer()"><span><b>+</b></span></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
+
+                        </div>
+
+                        <div class="container">
+                          <div class="row d-flex rounded border p-2 justify-content-center innerSiteContainerTopic" style="height: 23vh; overflow-y: auto;">
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-12"
+                              *ngFor="let numberOfNodes of this.model.nodeLayersArray; index as i;trackBy:trackByFn">
+                              <div class="mt-2 mb-2 me-1 border p-3 rounded shadow innerSiteContainer">
+                                <p class="myFontSize text-center">{{'playground.p34' | translate}}: {{i+1}}</p>
+                                <input class="form-control mb-1 inputParameters inputLayer" min="1" type="number"
+                                  name="numberOfNodes{{i}}" id={{i}} [value]="this.model.nodeLayersArray[i]"
+                                  (input)="updateLayerValue($event)">
+
+                                <select class="form-control form-select inputParameters form-select-sm" name=""
+                                  id="ActFuncSelect" formControlName="activationFunction" (change)="selectActivationFunctionForLayer($event, i)">
+                                  <option value="relu" [selected]="this.model.layersActivationFunctions[i] === 'relu'">ReLU</option>
+                                  <option value="tanh" [selected]="this.model.layersActivationFunctions[i] === 'tanh'">Tanh</option>
+                                  <option value="sigmoid" [selected]="this.model.layersActivationFunctions[i] === 'sigmoid'">Sigmoid</option>
+                                  <option value="linear" [selected]="this.model.layersActivationFunctions[i] === 'linear'">Linear</option>
+
+                                  <option value="selu" [selected]="this.model.layersActivationFunctions[i] === 'selu'">SELU</option>
+                                  <option value="elu" [selected]="this.model.layersActivationFunctions[i] === 'elu'">ELU</option>
+                                  <option value="leaky_relu" [selected]="this.model.layersActivationFunctions[i] === 'leaky_relu'">Leaky ReLU</option>
+                                  <option value="swish" [selected]="this.model.layersActivationFunctions[i] === 'swish'">Swish</option>
+                                  <option value="hard_sigmoid" [selected]="this.model.layersActivationFunctions[i] === 'hard_sigmoid'">Hard Sigmoid</option>
+                                  <option value="gelu" [selected]="this.model.layersActivationFunctions[i] === 'gelu'">GELU</option>
+                                  <option value="softplus" [selected]="this.model.layersActivationFunctions[i] === 'softplus'">Softplus</option>
+                                  <option value="softmax" [selected]="this.model.layersActivationFunctions[i] === 'softmax'">Softmax</option>
+                                  <option value="softsign" [selected]="this.model.layersActivationFunctions[i] === 'softsign'">Softsign</option>
+                                </select>
+                            </div>
+                          </div>
+                          </div>
+
+                        </div>
+
+                        <div class="container mt-4">
+                          <div class="row d-flex justify-content-center rounded border shadow pb-0 mb-0">
+
+                            <div class="col-md-4 mx-5 p-3">
+                              <label for="Optimizer">{{'playground.p35' | translate}}</label>
+                              <select formControlName="optimizer" [(ngModel)]="this.model.Optimizer" (change)="OptimizerChange($event)"
+                              class="form-control form-select inputParameters form-select-sm mb-3" name=""
+                              id="Optimizer">
+                              <option value="adam" [selected]="this.model.Optimizer=='adam'">Adam</option>
+                              <option value="sgd" [selected]="this.model.Optimizer=='sgd'">SGD</option>
+                              <option value="adamax" [selected]="this.model.Optimizer=='adamax'">Adamax</option>
+                              <option value="rmsprop" [selected]="this.model.Optimizer=='rmsprop'">RMSprop</option>
+                              <option value="adadelta" [selected]="this.model.Optimizer=='adadelta'">Adadelta</option>
+                              <option value="adagrad" [selected]="this.model.Optimizer=='adagrad'">Adagrad</option>
+                              <option value="ftrl" [selected]="this.model.Optimizer=='ftrl'">Ftrl</option>
+                              </select>
+
+                            </div>
+
+                            <div class="col-md-4 mx-5 p-3">
+                              <label for="NumEpochs">{{'playground.p36' | translate}}</label>
+
+                              <input
+                              type="number"
+                              min=""
+                              formControlName="numEpochs"
+                              [(ngModel)]="this.model.NumEpochs"
+                              class="form-control inputParameters form-control-sm mb-3"
+                              name=""
+                              id="NumEpochs"
+                              #popEpochs = "ngbPopover"
+                              ngbPopover="Value must be beetwen 1 and 1000"
+                              triggers="manual"
+                              (keyup)="checkEpochs(popEpochs,$event)"
+                              placement="bottom"
+                              />
+
+
+                            </div>
+
+
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                  <div class="innerSiteContainer col-md-2 rounded border shadow mb-5 d-flex align-items-center">
+
+
+                    <div class="col-md-6 w-100 mt-3">
+                      <div class="mb-3 text-center mb-2">
+                        <label for="customRange1" class="form-label">
+                           {{'playground.p38' | translate}}: {{this.model.TestToTrainRatio}}% | {{'playground.p37' | translate}}:{{100-this.model.TestToTrainRatio}}% </label>
+                        <input type="range" class="form-range" min="10" max="90" step="10" value="50" id="TestToTrain"
+                          (input)="TTRChanged($event)" formControlName="testToTrain" [(ngModel)]="this.model.TestToTrainRatio">
+                      </div>
+
+                      <div class="mb-3 text-center  mb-2">
+
+                        <label for="customRange2" class="form-label">{{'playground.p39' | translate}}: {{this.model.Noise}}</label>
+                        <input type="range" class="form-range" min="0" max="50" step="5" value="25" id="Noise"
+                          [(ngModel)]="this.model.Noise" (input)="NoiseChanged($event)" formControlName="noise">
+
+                      </div>
+
+                      <div class="mb-3 text-center">
+
+                        <label for="customRange3" class="form-label">{{'playground.p40' | translate}}: {{this.model.BatchSize}}</label>
+                        <input type="range" class="form-range slider" min="0" max="6" step="1"
+                          [(ngModel)]="this.model.BatchIndex"  id="BatchSize" (input)="BatchSizeChanged($event)"
+                          formControlName="batchSize">
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+  </form>
+
+
+
+  

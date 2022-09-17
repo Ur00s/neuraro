@@ -1,0 +1,45 @@
+<div class="container rounded px-3">
+<div class="text-center">
+  <span class="Titles">{{'playground.p68' | translate}}</span>
+</div>
+
+<h6 class="mt-2">{{'playground.p1' | translate}}</h6>
+<select style="width: 100%; border-radius: 3px;" class="form-select form-control mb-3" [(ngModel)]="this.output">
+  <option *ngFor="let name of this.columns" value="{{ name }}">{{ name }}</option>
+</select>
+
+<h6>{{'playground.p2' | translate}}</h6>
+<input class="form-control mb-3 inputParameters inputLayer" min="1" type="number" [(ngModel)]="this.numberOfInputs">
+
+<div class="d-flex justify-content-center">
+<button type="button" class="btn btn-primary mb-3" aria-label="Close" (click)="featureSelection()">{{'playground.p3' | translate}} <svg style="position: relative; top: -3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+  <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+</svg></button>
+</div>
+
+<div class="innerSiteContainerTopic rouned p-2" style="height: 45vh; overflow-y: auto;">
+  <div class="row rounded border shadow mb-5 p-3 pb-0 d-flex align-items-center innerSiteContainer mx-1 " *ngFor="let val of this.features.listOfInputs;index as i;">
+
+    <div class="col-md-12 mb-2 text-center">
+    <div class="col-md-12">
+      <span style="color: var(--button-color);">{{'playground.p4' | translate}}:&nbsp;&nbsp;</span>
+      <span *ngFor="let v of val; last as isLast">[{{ v }}] <span *ngIf="!isLast">-</span> &nbsp;</span>
+    </div>
+    <div>
+      <span class="col-md-12" style="color: var(--button-color);">{{'playground.p5' | translate}}:</span><span>&nbsp;&nbsp;{{ this.features.avgScore[i] }}</span><br>
+    </div>
+    <div>
+      <span class="col-md-12" style="color: var(--button-color);">{{'playground.p6' | translate}}: </span><span>&nbsp;&nbsp;{{ this.features.standardError[i] }}</span><br>
+    </div>
+    </div>
+
+
+    <div class="col-md-12 mb-2">
+      <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-primary " (click)="selectFeatures(i)" data-bs-dismiss="modal">{{'playground.p7' | translate}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>

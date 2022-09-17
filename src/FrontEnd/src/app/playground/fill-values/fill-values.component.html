@@ -1,0 +1,76 @@
+<div *ngIf="datasetHaveNullValues()">
+<!-- Button trigger modal -->
+<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    {{'outlierNA.p4' | translate}} <svg style="position: relative; top: -3px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
+      <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title Titles" id="exampleModalLabel">{{'outlierNA.p5' | translate}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-3">
+        <div>
+          <div class="mb-2">
+            <div class="text-center mb-3">
+              <span class="Titles" style="user-select: none;">{{'outlierNA.p6' | translate}}</span>
+            </div>
+            <div >
+              <select class="form-control form-select inputParameters border" name="" id="" (change)="selectMethod($event)">
+                <option selected value="none">{{'outlierNA.p7' | translate}}</option>
+                <option value="backfill">backfill</option>
+                <option value="bfill">bfill</option>
+                <option value="pad">pad</option>
+                <option value="ffill">ffill</option>
+              </select>
+            </div>
+          </div>
+        <div class="text-center mb-3">
+          <span class="Titles" style="user-select: none;">{{'outlierNA.p8' | translate}}</span>
+        </div>
+        <div>
+        <table class="table mb-2 border">
+          <tbody *ngFor="let stat of this.statsArray;let i = index">
+            <ng-container *ngIf="!(stat.numberOfNan == stat.count)">
+              <tr  class="evenTD"  *ngIf="haveNullValues(i)">
+                <td class="myHeaderWidth text-center align-middle">
+                  {{ stat.name }}
+                </td>
+                <td style="width: 300px;">
+                  <select class="form-control form-select inputParameters border" name="" id=""
+                    *ngIf="stat.min || stat.max || stat.mean || stat.median" (change)="setValue($event, i, stat)">
+                    <option value="{{ stat.min }}">Min - {{stat.min}} </option>
+                    <option value="{{ stat.max }}">Max - {{stat.max}} </option>
+                    <option selected value="{{ stat.mean }}">Mean - {{stat.mean}} </option>
+                    <option value="{{ stat.median }}">Median - {{stat.median}} </option>
+                  </select>
+
+                  <select class="form-control form-select inputParameters border" name="" id="" *ngIf="stat.top"
+                    (change)="setValue($event, i, stat)">
+                    <option *ngFor="let val of stat.values" value="{{ val }}">{{ val }}</option>
+                  </select>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary col-md-12 mt-5" data-bs-dismiss="modal" (click)="fillMissingValues()">{{'outlierNA.p9' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+

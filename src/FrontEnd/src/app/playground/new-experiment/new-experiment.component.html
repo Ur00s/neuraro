@@ -1,0 +1,68 @@
+<div class="siteContainer container mt-5 mb-5 pb-4 rounded shaded">
+
+  <div class="d-flex justify-content-center pt-5 text-center">
+    <h4 class="Titles" style="user-select: none;  font-size: 25px;"><b>{{'experiment.p1' | translate}}</b>
+    </h4>
+  </div>
+
+  <div class="row justify-content-center mt-3 px-5">
+
+    <div class="col-md-10 px-5 py-4">
+    <form class="mb-4" [formGroup]="expForm" (ngSubmit)="submit()"  >
+
+      <span class="ms-1">{{'experiment.p3' | translate}}:</span>
+      <input type="text" class="form-control mb-4 mt-1" formControlName="experimentName" placeholder="{{'experiment.p2' | translate}}" maxlength="255">
+
+      <span class="ms-1">{{'experiment.p8' | translate}}:</span>
+      <textarea style="min-height: 100px;" type="text" class="form-control mb-4 mt-1" formControlName="experimentDescription" placeholder="{{'experiment.p8' | translate}}" maxlength="1024"></textarea>
+
+      <span class="ms-1">{{'experiment.p4' | translate}}:</span>
+      <select class="form-control form-select inputParameters mb-3" formControlName="file" [(ngModel)]="selectedFile">
+        <!-- <option selected disabled>{{'experiment.p5' | translate}}</option> -->
+        <option *ngFor="let file of this.files" [selected]="file.id == selectedFile" [value]="file.id">{{file.fileName}}</option>
+
+      </select>
+
+
+      <span class="">{{'experiment.p6' | translate}}:</span>
+      <form style="background-color: transparent;" [formGroup]="myForm" (ngSubmit)="submitFile()" >
+      <div class="input-group mt-1 col-md-12">
+
+        <input class="form-control" data-max-size="2048" formControlName="file" id="file" type="file" accept=".csv"
+        (change)="onFileChange($event)">
+        <!-- <button type="submit" class="btn btn-primary">{{'playground.p14' | translate}}</button> -->
+      </div>
+    </form>
+
+
+
+      <button type="submit" class="btn btn-primary col-md-12 mt-5">{{'experiment.p7' | translate}}</button>
+    </form>
+
+
+
+
+  </div>
+
+  </div>
+
+  <button #modalButton  type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId" hidden>
+    Launch
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-body text-danger" style="font-size: xx-large; font-weight: bolder;">
+            {{errorMessage}}
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{'forum.p9' | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

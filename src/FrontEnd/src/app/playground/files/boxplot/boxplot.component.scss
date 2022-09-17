@@ -1,0 +1,15 @@
+canvas {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
+#container{
+  background-color: var(--form-color);
+}
+
+#wholeContainer{
+  background-color: var(--site-container-color);
+  border-radius: 7px;
+}

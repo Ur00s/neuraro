@@ -1,0 +1,70 @@
+<body>
+    <div class="d-flex align-items-center justify-content-center" >
+      <!-- <div *ngIf="showSpinnerLogin" style="position: absolute; margin: auto;">
+        <app-spinner></app-spinner>
+      </div> -->
+      <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="m-4 p-5 rounded col-md-5 shadow">
+        <div class="row">
+            <div class="col-md-6 user-select-none"><h4>{{'login.p1' | translate}}:</h4></div>
+            <div class="col-md-6 user-select-none"><p class="errorMsgL" style="min-height: 50px;">{{errorMsg}}</p></div>
+        </div>
+
+        <!-- Username -->
+        <div class="mb-3 form-control-md">
+            <label for="LoginInputUsername" class="form-label user-select-none">{{'login.p2' | translate}}:</label>
+            <input type="text" class="form-control form-rounded" name="username" [(ngModel)]="model.username" id="LoginInputUsername" placeholder="{{'login.p3' | translate}}">
+            <p class="errorMsgL">{{errUn}}</p>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3 form-control-md">
+            <label for="LoginInputPassword" class="form-label user-select-none">{{'login.p4' | translate}}:</label>
+            <input type="password" class="form-control form-rounded" name="password" [(ngModel)]="model.password" id="LoginInputPassword" placeholder="{{'login.p5' | translate}}">
+            <p class="errorMsgL">{{errPa}}</p>
+        </div>
+
+
+        <!-- Buttons -->
+        <div class="container-fluid mb-4 mt-5 p-0">
+
+            <div class="row d-flex justify-content-center g-0">
+
+                <div class="loginButton col-md-12 d-flex justify-content-center mb-3">
+                    <input required type="submit" name="" id="" class="btn btn-primary col-md-12 col-sm-12 col-xs-12" value="{{'login.p1' | translate}}">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="separator container align-content-center justify-content-center mt-2">
+
+            <h5><span>{{'login.p7' | translate}}</span></h5>
+
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="g-signin2 " data-onsuccess="onSignIn">
+
+                        <!-- <button type="button" (click)="signIn()">
+                            Sign in with Google
+                        </button> -->
+                        <cool-google-button color="dark" (click)="signIn()">
+                          {{'login.p8' | translate}}
+                          </cool-google-button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+  </body>

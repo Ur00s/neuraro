@@ -1,0 +1,1403 @@
+{
+        "intents": [
+                {
+                        "tag": "greeting",
+                        "patterns": [
+                                "Cao",
+                                "Ćao",
+                                "Kako si",
+                                "Ima li koga?",
+                                "Zdravo",
+                                "Dobar dan",
+                                "Sta ima",
+                                "Dobar dan",
+                                "Dobro jutro"
+                        ],
+                        "responses": [
+                                "Zdravo!",
+                                "Lepo je videti te opet!",
+                                "Zdravo, kako mogu da ti pomognem?"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "pozdraviEngleski",
+                        "patterns": [
+                                "Bye",
+                                "How are you",
+                                "Anybody there",
+                                "Hello",
+                                "Hi",
+                                "Good day",
+                                "Good evening"
+                        ],
+                        "responses": [
+                                "Hello!",
+                                "Nice to see you again",
+                                "Hi, how can I help you?"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "goodbye",
+                        "patterns": [
+                                "Zbogom",
+                                "Vidimo se kasnije",
+                                "baj",
+                                "Ja odlazim",
+                                "Želim vam prijatan dan"
+                        ],
+                        "responses": [
+                                "Tuzan sam sto odlazis :(",
+                                "Pricacemo kasnije",
+                                "Zbogom!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "goodbyeEngleski",
+                        "patterns": [
+                                "Goodbye",
+                                "See you later",
+                                "I am leaving",
+                                "I wish you a nice day"
+                        ],
+                        "responses": [
+                                "I'm sad you're leaving :(",
+                                "Pricacemo kasnije",
+                                "We'll talk later!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "featureSelection",
+                        "patterns": [
+                                "Za šta se koristi selekcija featura?",
+                                "Šta znaci feature selection?",
+                                "Kada se upotrebljava selekcija featura",
+                                "Upotreba feature selection?",
+                                "Selekcija featura?",
+                                "Sta predstavlja feature selection?",
+                                "Sta oznacava selekcija featura?",
+                                "Sta je selekcija featura i zasto se koristi"
+                        ],
+                        "responses": [
+                                "Feature selection za odredjeni izlaz odredjuje koje ulaze je najbolje koristiti za najtacniji model!",
+                                "Pre nego sto trenirate model preporucljivo je koristiti selekciju featura, kako bismo odredili koji ulazi su najbolji za postizanje najtacnijeg modela!",
+                                "Feature selection je proces odabira podskupa relevantnih featura za upotrebu u konstrukciji modela",
+                                "Selekcija featura odredjuje koji featuri su najbolji(najrelevantniji) za izbor ulaza",
+                                "Selekcija featura se koristi za odabir najboljih featura za model neuronske mreze"
+                        ],
+                        "context_set": ""
+                },
+                
+                {
+                        "tag": "featureSelectionEngleski",
+                        "patterns": [
+                                "What is feature selection used for",
+                                "What does feature selection mean?",
+                                "When feature selection is used",
+                                "Use of feature selection?",
+                                "Feature selection?"
+                        ],
+                        "responses": [
+                                "Feature selection for a particular output determines which inputs are best used for the most accurate model!",
+                                "Before you train a model, it is recommended to use a selection of features, in order to determine which inputs are the best to achieve the most accurate model!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "linRegr",
+                        "patterns": [
+                                "Za sta se koristi linerna regresija?",
+                                "Sta je linearna regresija?",
+                                "linarna regresija?",
+                                "Upotreba linearne regresije?",
+                                "Kada se koristi linearna regresija"
+                        ],
+                        "responses": [
+                                "Linearna regresija se koristi za podatke koji su korelisani, preporucujem Vam da pogledate korelacionu matricu kako biste videli korelaciju izmedju podataka!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "linRegrEngleski",
+                        "patterns": [
+                                "What is linear regression used for?",
+                                "What is linear regression?",
+                                "linear regression?",
+                                "Use of linear regression",
+                                "When linear regression is used"
+                        ],
+                        "responses": [
+                                "Linear regression is used for data that is correlated, I recommend you look at the correlation matrix to see the correlation between the data!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "korelacija",
+                        "patterns": [
+                                "Sta znaci korelacija?",
+                                "korelacija?",
+                                "Za sta je korisna korelacija?",
+                                "Sta je korelacija"
+                        ],
+                        "responses": [
+                                "Korelacija predstavlja zavisnost izmedju promenljivih i za prikaz korelacija izmedju featura koristi se korelaciona matrica!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "korelacijaEngleski",
+                        "patterns": [
+                                "What does correlation mean?",
+                                "correlation?",
+                                "What is the correlation useful for?",
+                                "What is correlation"
+                        ],
+                        "responses": [
+                                "Correlation is the dependence between variables and a correlation matrix is ​​used to display correlations between features!"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "korelacionaMatrica",
+                        "patterns": [
+                                "Sta predstavlja korelaciona matrica?",
+                                "Sta je korelaciona matrica?",
+                                "Za sta je koristi korelaciona matrica?"
+                        ],
+                        "responses": [
+                                "Korelaciona matrica predstavlja korelaciju izmedju svih podataka medjusobno i ako je vrednost 1 ili -1  ili bliska ovim vrednostima onda su podaci korelisani, a ukoliko je vrednost 0 ili je vrednost bliska nuli onda podaci nisu korelisani"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "korelacionaMatricaEngleski",
+                        "patterns": [
+                                "What is a correlation matrix?",
+                                "What is the correlation matrix used for?"
+                        ],
+                        "responses": [
+                                "The correlation matrix represents the correlation between all data with each other and if the value is 1 or -1 or close to these values then the data are correlated, and if the value is 0 or the value is close to zero then the data are not correlated"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "outlieri",
+                        "patterns": [
+                                "Sta su outlieri?",
+                                "Sta su outlajeri i zasto su bitni?",
+                                "Sta oznacavaju outlajeri",
+                                "Outlieri?",
+                                "Outlajeri?"
+                        ],
+                        "responses": [
+                                "Outlieri su vrednosti koje odstupaju od uobicajenih vrednosti i treba ih izbrisati",
+                                "Outlajeri su vrednstoi koje odudaraju od standardnih vrednosti i najcesce se prikazuju graficki na boxplotu"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "outlieriEngleski",
+                        "patterns": [
+                                "What are outliers?",
+                                "what are outliers and why are they important?",
+                                "What do outliers mean?",
+                                "Outliers?"
+                        ],
+                        "responses": [
+                                "Outliers are values that deviate from the usual values and should be deleted",
+                                "Outliers are values that deviate from standard values and are most often displayed graphically on the boxplot"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "pomoc",
+                        "patterns": [
+                                "Da li mozes da mi pomognes?",
+                                "Da li možeš da mi pomogneš?",
+                                "Potrebna mi je pomoc?",
+                                "Potrebna mi je pomoć?",
+                                "Ne znam nista o neuronskim mrezama,mozete li da mi pomognete?",
+                                "Totalni sam pocetnik,potrebna mi je pomoc za razumevanje neuronskih mreza",
+                                "Treba mi pomoc oko neuronskih mreza"
+                        ],
+                        "responses": [
+                                "Mogu da ti pomognem,postavi mi bilo koje pitanje",
+                                "Pokusacu da ti pomognem,postavi mi pitanje :D",
+                                "Bice mi drago da ti pomognem na bilo koji nacin",
+                                "Sta te konkretno muci,mozes slobodno da me pitas"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "pomocEngleski",
+                        "patterns": [
+                                "Can you help me?",
+                                "I need help?",
+                                "I don't know anything about neural networks, can you help me?",
+                                "I am a total beginner, I need help to understand neural networks",
+                                "I need help with neural networks"
+                        ],
+                        "responses": [
+                                "I can help you, ask me any question",
+                                "I will try to help you, ask me a question :D",
+                                "I will be glad to help you in any way",
+                                "What exactly is bothering you, feel free to ask me"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "name",
+                        "patterns": [
+                                "Kako se zoves?",
+                                "Kako mogu da te zovem?",
+                                "Kako se zovete?",
+                                "Zeleo bih da vas upoznam"
+                        ],
+                        "responses": [
+                                "Zovem se Ivan i predstavljam tim Neuraro",
+                                "Mozes me zvati Ivan i predstavljam tim Neuraro",
+                                "Moje ime je Ivan i predstavljam tim Neuraro"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "nameEngleski",
+                        "patterns": [
+                                "What is your name?",
+                                "How I can call you?",
+                                "I would like to meet you"
+                        ],
+                        "responses": [
+                                "My name is Ivan and I represent the Neuraro team",
+                                "You can call me Ivan and I represent the Neuraro team"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "enkodiranje",
+                        "patterns": [
+                                "Za sta se koristi enkodiranje?",
+                                "Cemu je namenjeno enkodiranje?",
+                                "Cemu sluzi enkodiranje?",
+                                "Sta predstavlja enkodiranje?",
+                                "Enkodiranje?",
+                                "Upotreba enkodiranja"
+                        ],
+                        "responses": [
+                                "Neuronske mreze rade samo sa brojevima, da bismo pretvorili stringove u brojeve koristimo enkodiranje",
+                                "Enkodiranje sluzi za prebacivanje stringova u brojeve, jer neuronske mreze rade samo sa brojevima",
+                                "Enkodiranje se koristi za prebacivanje stringova u brojeve kako bi neuronske mreze mogle da rade sa takvim podacima"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "enkodiranjeEngleski",
+                        "patterns": [
+                                "What is encoding used for?",
+                                "What is encoding for?",
+                                "What is encoding?"
+                        ],
+                        "responses": [
+                                "Neural networks work only with numbers, we use encoding to convert strings into numbers",
+                                "Encoding uses for converting strings to numbers, because neural networks only work with numbers",
+                                "Encoding is used to convert strings to numbers so that neural networks can work with such data"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "zahvalnost",
+                        "patterns": [
+                                "Hvala ti sto si mi pomogao",
+                                "Mnogo ti hvala, pomogao si mi mnogo da shvatim neuronske mreze",
+                                "Hvala ti puno na pomoci",
+                                "Hvala ti sto si mi pomogao, ne bih mogao da razumem neuronske mreze bez tvoje pomoci"
+                        ],
+                        "responses": [
+                                "Drago mi je da sam ti pomogao :D",
+                                "Ako ti je potrbna jos neka pomoc,samo reci",
+                                "Uvek sam na raspolaganju, ako ti je potrebna pomoc"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "zahvalnostEngleski",
+                        "patterns": [
+                                "Thank you for helping me",
+                                "Thank you very much, you helped me a lot to understand neural networks",
+                                "Thank you so much for your help",
+                                "Thank you for helping me, I could not understand neural networks without your help"
+                        ],
+                        "responses": [
+                                "I'm glad I helped you :)",
+                                "If you need any more help, just say so",
+                                "I'm always available if you need help"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "trening_test",
+                        "patterns": [
+                                "Koliko podataka treba izabrati za trening skup?",
+                                "Koliko podataka je poželjno koristiti za trening i testni skup?",
+                                "Šta je najoptimalnija opcija za izbor trening i testnog skupa?",
+                                "Koja je najbolja opcija za izbor velicine trening i test skupa",
+                                "Preporuka za velicinu trening i test skupa",
+                                "Koliko podataka je najbolje za izbor testnih podataka",
+                                "Koliko podataka je najbolje za izbor trening podataka"
+                        ],
+                        "responses": [
+                                "Preporucujem Vam da izabere 70%-90% podataka za trening skup i 10%-30% podataka za testni skup",
+                                "Praksa je pokazala da je najbolje koristiti 70%-90% podataka za trening skup i 10%-30% podataka za testni skup",
+                                "Najbolja opcija je 70%-90% podataka za trening skup i 10%-30% za testni skup"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "trening_testEngleski",
+                        "patterns": [
+                                "How much data should be selected for a training set?",
+                                "How much data is desirable to use for training and test set?",
+                                "What is the best option for choosing a training and test set?",
+                                "What is the best option for choosing the size of the training and test set",
+                                "Recommendation for size training and test set",
+                                "How much data is best for selecting test data",
+                                "How much data is best for choosing training data"
+                        ],
+                        "responses": [
+                                "I recommend that you choose 70%-90% of the data for the training set and 10%-30% of the data for the test set",
+                                "Practice has shown that it is best to use 70%-90% of the data for the training set and 10%-30% of the data for the test set",
+                                "The best option is 70%-90% data for the training set and 10%-30% for the test set"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "batchSize",
+                        "patterns": [
+                                "Kako da znam koju vrednost da izaberem za velicinu serije",
+                                "Koja vrednost je optimalna za izbor velicine serije?",
+                                "Sta mi preporucujete za odabir velicine serije",
+                                "Koja je najbolja opcija za izbor velicine serije",
+                                "Koja je najbolja opcija za izbor velicine serije"      
+                        ],
+                        "responses": [
+                                "Batch size(velicina serije) predstavlja broj uzoraka koji ce biti propagirani kroz mrezu, najbolje je poceti sa vrednoscu 16 ili 32, a nakon toga povecavati batch size i pronaci najoptimalniju vrednost"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "batchSizeEngleski",
+                        "patterns": [
+                                "How do I know which value to choose for batch size",
+                                "What value is optimal for batch size selection?",
+                                "What do you recommend for me to choose for batch size",
+                                "What is the best option for choosing the batch size"     
+                        ],
+                        "responses": [
+                                "Batch size is the number of samples that will be propagated through the network, it is best to start with a value of 16 or 32, and then increase the batch size and find the most optimal value"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "DropOut",
+                        "patterns": [
+                                "Sta predstavlja stepen odbacivanja?",
+                                "Kako se definise stepen odbacivanja",
+                                "Sta znaci stepen odbacivanja",
+                                "Sta je stepen odbacivanja",
+                                "Za sta se koristi stepen odbacivanja",
+                                "Sta znaci stepen odbacivanja"        
+                        ],
+                        "responses": [
+                                "Stepen odbacivanja je tehnika koja ispusta neurone iz neuronske mreze ili ih 'ignorise' tokom treninga, drugim recima, razliciti neuroni se privremeno uklanjaju iz mreze."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "DropOutEngleski",
+                        "patterns": [
+                                "What is a dropout?",
+                                "How to define a dropout",
+                                "What does dropout mean?",
+                                "What is dropout used for?"        
+                        ],
+                        "responses": [
+                                "Dropout is a technique that drops neurons from the neural network or ignores them during training, in other words, various neurons are temporarily removed from the network."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "momentumBiranje",
+                        "patterns": [
+                                "Zasto ne mogu da izaberem opciju momentum?",
+                                "Kako mogu da izaberem opciju momentum",
+                                "Zasto ne mogu da unesem ni jednu opciju za momentum",
+                                "Kako da modifikujem momentum",
+                                "Zasto ne mogu da promenim momentum"      
+                        ],
+                        "responses": [
+                                "Ukoliko izaberete SGD optimizator ili RMSprop optimizator mozete da unesete bilo koju vrednost za momentum. Inace momentum predstavlja varijantu stohastickog gradijenta spustanja"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "momentumBiranjeEngleski",
+                        "patterns": [
+                                "Why can't I choose the momentum option?",
+                                "How can I choose the momentum option",
+                                "Why can't I enter any momentum options",
+                                "How to modify the momentum",
+                                "Why can't I change the momentum"      
+                        ],
+                        "responses": [
+                                "If you select SGD optimizer or RMSprop optimizer you can enter any value for momentum. Otherwise, momentum is a variant of the stochastic gradient of descent"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "momentum",
+                        "patterns": [
+                                "Sta je momentum",
+                                "Sta predstavlja momentum",
+                                "momentum?",
+                                "Definicija za momentum"
+                        ],
+                        "responses": [
+                                "Momentum je prosirenje algoritma optimizacije gradijenta spustanja koji omogucava pretrazi da izgradi inerciju u pravcu i prostoru za pretragu i prevazidje oscilacije bucnih nagiba i obale preko ravnih tacaka prostora za pretragu."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "momentumEngleski",
+                        "patterns": [
+                                "What is momentum",
+                                "What represents momentum",
+                                "Definition for momentum"
+                        ],
+                        "responses": [
+                                "Momentum is an extension of the descent gradient optimization algorithm that allows the search to build inertia in the direction and search space and overcome the oscillations of noisy slopes and shoreline across the flat points of the search space."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "preventLossIncreas",
+                        "patterns": [
+                                "Šta oznacava opcija 'sprecavanje povecanja gubitka'?",
+                                "Šta oznacava opcija sprecavanje povecanja gubitka?",
+                                "Za sta se koristi opcija 'sprecavanje povecanja gubitka'",
+                                "Za sta se koristi opcija sprecavanje povecanja gubitka",        
+                                "Za sta sluzi opcija 'sprecavanje povecanja gubitka'",
+                                "Za sta sluzi opcija sprecavanje povecanja gubitka"
+                        ],
+                        "responses": [
+                                "Ukoliko odaberete opciju 'Yes' sprecicete overfitovanje modela to jest preucavanje modela"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "preventLossIncreasEngleski",
+                        "patterns": [
+                                "What does the 'prevent loss increases' option mean?",
+                                "What is the 'prevent loss increase' option used for?",        
+                                "What is the 'prevent loss increases' option for?"
+                        ],
+                        "responses": [
+                                "If you select the 'Yes' option, you will prevent the model from being overfitted"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "overfitovanje",
+                        "patterns": [
+                                "Sta znaci overfitovanje",
+                                "Sta predstavlja overfitovanje",
+                                "Sta oznacava overfitovanje"
+                        ],
+                        "responses": [
+                                "Overfitovanje predstavlja prekomerno pilagodjavanje to jest pravljenje modela koji previse blisko ili tacno odgovara odredjenom skupu podataka, pa stoga mozda ndece da se uklopi u dodatne podatke ili pouzdano predvidi buduca zapazanja u testom skupu."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "overfitovanjeEngleski",
+                        "patterns": [
+                                "What does overfitting mean?",
+                                "What constitutes overfitting",
+                                "What does overfitting mean?"
+                        ],
+                        "responses": [
+                                "Overfitting is over-adjustment, that is, making a model that fits too closely or accurately to a particular data set, and therefore may not fit into the additional data or reliably predict future observations in the test set."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "regRate",
+                        "patterns": [
+                                "Zasto ne mogu da podesim opciju 'stopa regularizacije'?",
+                                "Kako da odaberem opciju stopa regularizacija?",
+                                "Zasto ne mogu da podesim opciju 'stopa regularizacije'?",
+                                "Zasto ne mogu da odaberem opciju 'stopa regularizacija'?",
+                                "Kako da odaberem opciju 'stopa regularizacija'?",
+                                "Kako da odaberem opciju stopa regularizacija?"   
+                        ],
+                        "responses": [
+                                "Ukoliko izaberete L1 ili L2 regularizaciju onda cete moci da podesite ovu opciju"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "regRateEngleski",
+                        "patterns": [
+                                "Why can't I set the regularization rate option?",
+                                "Why can't I select the Regularization Rate option?",
+                                "How do I choose the Regularization Rate option?",
+                                "Why can't I set the 'regularization rate' option?",
+                                "Why can't I select the 'Regularization Rate option'?",
+                                "How do I choose the 'Regularization Rate option'?"
+                        ],
+                        "responses": [
+                                "If you select L1 or L2 regularization then you will be able to adjust this option"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "epohe",
+                        "patterns": [
+                                "Kako da znam koliki broj epoha treba da izaberem",
+                                "Koliko epoha je pozeljno da izaberem",
+                                "Broj epoha?",
+                                "Najoptimalniji izbor za broj epoha?",
+                                "Koliko epoha treba da izaberem"      
+                        ],
+                        "responses": [
+                                "Kada pokrenete treniranje modela videcete grafike i ukoliko su na graficima ravne linije u nekom trenurku, preporucujem Vam da smanjite broj epoha kako ne biste gubili procesorsko vreme"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "epoheEngleski",
+                        "patterns": [
+                                "How do I know how many epochs to choose",
+                                "How many epochs is desirable to choose",
+                                "Number of epochs?",
+                                "The best choice for the number of epochs?",
+                                "How many epochs should I choose"      
+                        ],
+                        "responses": [
+                                "When you start model training you will see graphics and if the graphics are straight lines in a moment, I recommend that you reduce the number of epochs so as not to waste CPU time"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "Regularizacija",
+                        "patterns": [
+                                "Sta predstavlja regularizacija?",
+                                "Sta je regularizacija",
+                                "Za sta se koristi regularizacija"        
+                        ],
+                        "responses": [
+                                "Regularizacija je proces dodavanja informacija u cilju resavanja lose postavljenog problema ili sprecavanja prekomernog prilagodjavanja"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "RegularizacijaEngleski",
+                        "patterns": [
+                                "What is regularization?",
+                                "What is regularization used for?"        
+                        ],
+                        "responses": [
+                                "Regularization is the process of adding information in order to solve a poorly set problem or prevent over-adjustment"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "L1Reg",
+                        "patterns": [
+                                "Sta predstavlja L1 regularizacija?",
+                                "Za sta se koristi L1 regularizacija?",
+                                "Sta je L1 regularizacija"        
+                        ],
+                        "responses": [
+                                "L1 regularizacija ili lasso je tehnika kojom se koeficijenti nekih feature svode na 0 tako da na ovaj nacin za treniranje linearnog modela neki featuri se potpuno uklanjaju."        
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "L1RegEngleski",
+                        "patterns": [
+                                "What is L1 regularization?",
+                                "What is L1 regularization used for?"        
+                        ],
+                        "responses": [
+                                "L1 regularization or lasso is a technique by which the coefficients of some features are reduced to 0 so that in this way to train a linear model some features are completely removed."        
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "L2Reg",
+                        "patterns": [
+                                "Sta predstavlja L2 regularizacija?",
+                                "Za sta se koristi L2 regularizacija?",
+                                "Sta je L2 regularizacija",
+                                "Šta je L2 regularizacija"       
+                        ],
+                        "responses": [
+                                "L2 regularizacija ili ridge regression (grebena regresija) je tehnika kojom se koeficijenti nekih feature priblizavaju 0 tako da se uticaj feature smanjuje za treniranje mreze."        
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "L2RegEngleski",
+                        "patterns": [
+                                "What is L2 regularization?",
+                                "What is L2 regularization used for?"        
+                        ],
+                        "responses": [
+                                "L2 regularization or ridge regression is a technique by which the coefficients of some features approach 0 so that the impact of the feature is reduced for network training"        
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "learningRate",
+                        "patterns": [
+                                "Sta predstavlja stepen ucenja?",
+                                "Šta predstavlja stepen ucenja?",
+                                "Sta je stepen ucenja",
+                                "Sta oznacava stepen ucenja",
+                                "Šta oznacava stepen ucenja",
+                                "Sta je stepen ucenja?"    
+                        ],
+                        "responses": [
+                                "Stepen ucenja kontrolise koliko brzo se model prilagodjava problemu"
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "learningRateEngleski",
+                        "patterns": [
+                                "What is a Learning Rate?",
+                                "What is the degree of learning?",
+                                "What does learning rate mean?"    
+                        ],
+                        "responses": [
+                                "Learning rate controls how quickly the model adapts to the problem."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "optimizer",
+                        "patterns": [
+                                "Sta je optimizator?",
+                                "Za sta se koristi optimizator?",
+                                "Cemu sluzi optimizator",
+                                "Cemu je namenjen optimizer"        
+                        ],
+                        "responses": [
+                                "Optimizator je funkcija ili algoritam koji menja atribute neuronske mreze, kao sto su tezine i brzina ucenja. Dakle pomaze u smanjenju ukupnog gubitka i poboljsanju tacnosti."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "optimizerEngleski",
+                        "patterns": [
+                                "What is an optimizer?",
+                                "What is an optimizer used for?",
+                                "What is an optimizer for?"
+                        ],
+                        "responses": [
+                                "An optimizer is a function or algorithm that changes neural network attributes, such as difficulty and learning speed. So it helps reduce overall loss and improve accuracy."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "model",
+                        "patterns": [
+                                "Kako trenirati model?",
+                                "Ne znam kako trenirati model",
+                                "Mozes li mi pomoci da treniram model?",
+                                "Treba mi pomoc oko treniranja modela"    
+                        ],
+                        "responses": [
+                                "Hajde da ti pomognem, prvo treba ucitati csv fajl i nakon toga treba odabrati ulazne i izlazne parametre. Sledeca stvar koju je potrebno da uradis je podesavanje hiperparametara i nakon toga je sve spremno. Sve sto je ostalo da odradis je da kliknes na dugme TRAIN MODEL i treniranje modela ce poceti."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "modelEngleski",
+                        "patterns": [
+                                "How to train a model?",
+                                "I don't know how to train a model",
+                                "Can you help me train a model?",
+                                "I need help training models"    
+                        ],
+                        "responses": [
+                                "Let me help you, first you need to load the csv file and then you need to select the input and output parameters. The next thing you need to do is adjust the hyperparameters and then everything is ready. All you have to do is click on the TRAIN MODEL button and model training will begin."
+                        ],
+                        "context_set": ""
+                },
+                {
+                        "tag": "OpcijaOptimizator",
+                        "patterns": [
+                                "Koji je optimizator najbolji za treniranje mreze",
+                                "Sta biste mi preporucili za izbor optimizatora",
+                                "Koja je najbolja opcija za izbor optimizatora",
+                                "Koji optimizator je najbolji?",
+                                "Koji optimizator je najbolje da izaberem",
+                                "Sta mi preporucujete za izbor optimizatora ",
+                                "Sta mi preporucujes za izbor optimizatora "      
+                        ],
+                        "responses": [
+                                "Adam je najbolji optimizator, tako da Vam preporucujem izbor ovog optimizatora. Ako zelite da trenirate neuronsku mrezu za krace vreme i efikasnije, onda je Adam optimizator najbolja opcija. Za retke podatke koristite optimizatore sa dinamickom brzinom ucenja"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "OpcijaOptimizatorEngleski",
+                        "patterns": [
+                                "Which optimizer is best for training network",
+                                "What would you recommend me to choose an optimizer",
+                                "What is the best option for choosing an optimizer",
+                                "Which optimizer is best?",
+                                "What do you recommend for choosing an optimizer"
+                        ],
+                        "responses": [
+                                "Adam is the best optimizer, so I recommend choosing this optimizer. If you want to train your neural network in a shorter time and more efficiently, then the Adam optimizer is the best option. For rare data, use optimizers with dynamic learning speed"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "njaboljiIzborUlaza",
+                        "patterns": [
+                                "Kako da izaberem ulazne podatke za treniranje najtacnijeg modela",
+                                "Kako da znam koje ulazne podatke mogu da izaberem za treniranje neuronske mreze",
+                                "Koje podatke je najbolje izabrati za ulazne?",
+                                "Kako da izaberem ulazne feature za treniranje najtacnijeg modela" 
+                        ],
+                        "responses": [
+                                "Klikom na karticu 'Input and Output parameters' videcete dugme 'Feature Selection' i klikom na dugme mozete izabrati ulazne podatka za treniranje najtacnijeg modela"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "njaboljiIzborUlazaEngleski",
+                        "patterns": [
+                                "How to choose the input data for training the most accurate model",
+                                "How do I know which input data to choose for neural network training",
+                                "Which data is best to choose for input?"
+                        ],
+                        "responses": [
+                                "By clicking on the 'Input and Output parameters' tab you will see the 'Feature Selection' button and by clicking on the button you can select the input data for training the most accurate model."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "klasifikacija",
+                        "patterns": [
+                                "Sta je klasifikacija",
+                                "Kada se koristi klasifikacija",
+                                "Kada je preporucljivo koristiti klasifikaciju",
+                                "Koji problemi se mogu resiti klasifikacijom"
+                        ],
+                        "responses": [
+                                "Klasifikacija se koristi ukoliko zelimo da predvidimo podatke koji su kategorijski, tako da za predvidjanje kategorijskih vrednosti preporucujem Vam  klasifikaciju"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "klasifikacijaEngleski",
+                        "patterns": [
+                                "What is classification",
+                                "When classification is used",
+                                "When it is advisable to use classification",
+                                "What problems can be solved by classification"
+                        ],
+                        "responses": [
+                                "The classification is used if we want to predict data that are categorical, so to predict categorical values, I recommend the classification"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "rednoEnkodiranje",
+                        "patterns": [
+                                "Sta je redno enkodiranje?",
+                                "Za sta se koristi redno enkodiranje",
+                                "Kada je pozeljno koristiti redno enkodiranje?",
+                                "Kada preporucujete upotrebu rednog enkodiranja",
+                                "Šta je redno enkodiranje?",
+                                "Redno enkodiranje?"
+                        ],
+                        "responses": [
+                                "Redno enkodiranje je tehnika kodiranja za rukovanje kategorickim varijablama. U ovoj tehnici, svakoj vrednosti se dodeljuje ceo broj na osnovu abecednog reda"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "rednoEnkodiranjeEngleski",
+                        "patterns": [
+                                "What is label encoding?",
+                                "What is label encoding used for?",
+                                "When is it desirable to use label encoding",
+                                "When you recommend using label encoding",
+                                "Label encoding?"
+                                ],
+                        "responses": [
+                                "Label encoding is a coding technique for handling categorical variables. In this technique, each value is assigned an integer based on the alphabetical order."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "OneHotEnkodiranje",
+                        "patterns": [
+                                "Sta je one hot enkodiranje?",
+                                "Za sta se koristi one hot enkodiranje?",
+                                "Kada je pozeljno koristiti one hot enkodiranje",
+                                "Kada preporucujete upotrebu one hot enkodiranja",
+                                "Šta je one hot enkodiranje?",
+                                "One hot enkodiranje?"
+                        ],
+                        "responses": [
+                                "One hot enkodiranje se koristi za pretvaranje kategorijskih promenljivih u format koji mogu lako da koriste algoritmi masinskog ucenja. Osnovna ideja one-hot enkodiranja je kreiranje novih promenljivih koje preuzimaju vrednost 0 i 1 da bi predstavljale originalne kategoricke vrednosti."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "OneHotEnkodiranjeEngleski",
+                        "patterns": [
+                                "What is one hot encoding?",
+                                "What is one-hot encoding?",
+                                "What is one hot encoding used for?",
+                                "When is it desirable to use one hot encoding",
+                                "When you recommend using one hot encoding",
+                                "One hot encoding?"
+                        ],
+                        "responses": [
+                                "One-hot encoding is used to convert categorical variables into a format that can be readily used by machine learning algorithms. The basic idea of one-hot encoding is to create new variables that take on values 0 and 1 to represent the original categorical values."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "BinarnoEnkodiranje",
+                        "patterns": [
+                                "Sta je binarno enkodiranje?",
+                                "Za sta se koristi binarno enkodiranje",
+                                "Kada je pozeljno koristiti binarno enkodiranje?",
+                                "Kada preporucujete upotrebu binarnog enkodiranja",
+                                "Šta je binarno enkodiranje?",
+                                "Binarno enkodiranje?"      
+                        ],
+                        "responses": [
+                                "Binarno enkodiranje je kombinacija hes kodiranja i one-hot kodiranja. U ovoj semi kodiranja, kategorijski feature se prvo konvertuje u numericki pomocu rednog kodera. Tada se brojevi transformisu u binarni broj. Nakon toga binarna vrednost se deli u razlicite kolone."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "BinarnoEnkodiranjeEngleski",
+                        "patterns": [
+                                "What is binary encoding?",
+                                "What is binary encoding used for?",
+                                "When is it desirable to use binary encoding",
+                                "When you recommend using binary encoding",
+                                "binary encoding?"                
+                        ],
+                        "responses": [
+                                "Binary encoding is a combination of Hash encoding and one-hot encoding. In this encoding scheme, the categorical feature is first converted into numerical using an ordinal encoder. Then the numbers are transformed in the binary number. After that binary value is split into different columns"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "adamOptimizator",
+                        "patterns": [
+                                "Sta je adam optimizator",
+                                "Kada je pozeljno koristiti adam optimizator",
+                                "Kada se koristi adam optimizator",
+                                "Kada preporucujete upotrebu adam optimizatora",
+                                "Adam optimizator?",
+                                "Adam optimizacija?"
+                        ],
+                        "responses": [
+                                "Adam optimizator  je zamenski algoritam optimizacije za stohasticki gradijentni spust za obuku modela dubokog ucenja. Adam kombinuje najbolja svojstva AdaGrad i RMSProp algoritama da bi obezbedio algoritam optimizacije koji moze da se nosi sa retkim gradijentima na bucnim problemima.",
+                                "Adam optimizacija je metoda koja je efikasna kada se radi sa velikim problemom koji ukljucuje mnogo podataka ili parametara. Zahteva manje memorije i efikasan je. Intuitivno, to je kombinacija algoritma 'gradijentnog spustanja sa zamahom' i 'RMSP' algoritma"      
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "adamOptimizatorEngleski",
+                        "patterns": [
+                                "What is adam optimizer?",
+                                "What is adam optimizer used for?",
+                                "When is it desirable to use adam optimizer",
+                                "When you recommend using adam optimizer",
+                                "Adam optimizer?",
+                                "Adam optimization"              
+                        ],
+                        "responses": [
+                                "Adam is a replacement optimization algorithm for stochastic gradient descent for training deep learning models. Adam combines the best properties of the AdaGrad and RMSProp algorithms to provide an optimization algorithm that can handle sparse gradients on noisy problems.",
+                                "The method is really efficient when working with large problem involving a lot of data or parameters. It requires less memory and is efficient. Intuitively, it is a combination of the 'gradient descent with momentum' algorithm and the 'RMSP' algorithm."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "SGdOptimizator",
+                        "patterns": [
+                                "Sta je SGD optimizator",
+                                "Kada je pozeljno koristiti SGD optimizator",
+                                "Kada se koristi SGD optimizator",
+                                "Kada preporucujete upotrebu SGD optimizatora",
+                                "SGD optimizator?",
+                                "SGD optimizacija?"
+                        ],
+                        "responses": [
+                                "Stohasticki gradijentni spust(SGD) je jednostavan, ali veoma efikasan pristup prilagodjavanju linearnih klasifikatora i regresora pod konveksnim funkcijama gubitka kao sto su (linearne) masine za vektore podrske i logisticka regresija."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "SGDOptimizatorEngleski",
+                        "patterns": [
+                                "What is SGD optimizer?",
+                                "What is SGD optimizer used for?",
+                                "When is it desirable to use SGD optimizer",
+                                "When you recommend using SGD optimizer",
+                                "SGD optimizer?",
+                                "SGD optimization"             
+                        ],
+                        "responses": [
+                                "Stochastic Gradient Descent (SGD) is a simple yet very efficient approach to fitting linear classifiers and regressors under convex loss functions such as (linear) Support Vector Machines and Logistic Regression."     
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdamaxOptimizator",
+                        "patterns": [
+                                "Sta je Adamax optimizator",
+                                "Kada je pozeljno koristiti Adamax optimizator",
+                                "Kada se koristi Adamax optimizator",
+                                "Kada preporucujete upotrebu Adamax optimizatora",
+                                "Adamax optimizator?",
+                                "Adamax optimizacija?"                
+                        ],
+                        "responses": [
+                                "Adamax optimizator je varijanta adam optimizatora zasnovana na normi beskonacnosti. Podrazumevani parametri prate one navedene u radu. Adamax je ponekad bolji od adam optimizatora, posebno u modelima sa ugradnjom."        
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdamaxOptimizatorEngleski",
+                        "patterns": [
+                                "What is Adamax optimizer?",
+                                "What is Adamax optimizer used for?",
+                                "When is it desirable to use Adamax optimizer",
+                                "When you recommend using Adamax optimizer",
+                                "Adamax optimizer?",
+                                "Adamax optimization"                
+                        ],
+                        "responses": [
+                                "The Adamax optimizer is a variant of the adam optimizer based on the infinity norm. The default parameters follow those listed in the paper. Adamax is sometimes better than the adam optimizer, especially in models with embeddings."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "RMSPropOptimizator",
+                        "patterns": [
+                                "Sta je RMSprop optimizator",
+                                "Kada je pozeljno koristiti RMSprop optimizator",
+                                "Kada se koristi RMSprop optimizator",
+                                "Kada preporucujete upotrebu RMSprop optimizatora",
+                                "RMSprop optimizator?",
+                                "RMSprop optimizacija?"                
+                        ],
+                        "responses": [
+                                "RMSprop optimizator je slican algoritmu gradijentnog spustanja sa impulsom. RMSprop optimizator ogranicava oscilacije u vertikalnom pravcu. Stoga, mozemo povecati nasu stopu ucenja i nas algoritam bi mogao da preduzme vece korake u horizontalnom pravcu konvergirajuci brze."        
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "RMSpropOptimizatorEngleski",
+                        "patterns": [
+                                "What is RMSprop optimizer?",
+                                "What is RMSprop optimizer used for?",
+                                "When is it desirable to use RMSprop optimizer",
+                                "When you recommend using RMSprop optimizer",
+                                "RMSprop optimizer?",
+                                "RMSprop optimization"                
+                        ],
+                        "responses": [
+                                "The RMSprop optimizer is similar to the gradient descent algorithm with momentum. The RMSprop optimizer restricts the oscillations in the vertical direction. Therefore, we can increase our learning rate and our algorithm could take larger steps in the horizontal direction converging faster."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdadeltaOptimizator",
+                        "patterns": [
+                                "Sta je Adadelta optimizator",
+                                "Kada je pozeljno koristiti Adadelta optimizator",
+                                "Kada se koristi Adadelta optimizator",
+                                "Kada preporucujete upotrebu Adadelta optimizatora",
+                                "Adadelta optimizator?",
+                                "Adadelta optimizacija?"                
+                        ],
+                        "responses": [
+                                "Optimizator koji implementira Adadelta algoritam. Adadelta optimizacija je metoda stohastickog gradijenta spustanja koja se zasniva na adaptivnoj stopi ucenja po dimenziji da bi se resila 2 nedostatka: kontinuirano opadanje stopa ucenja tokom treninga. Potreba za rucno odabranom globalnom stopom ucenja."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdadelatOptimizatorEngleski",
+                        "patterns": [
+                                "What is Adadelta optimizer?",
+                                "What is Adadelta optimizer used for?",
+                                "When is it desirable to use Adadelta optimizer",
+                                "When you recommend using Adadelta optimizer",
+                                "Adadelta optimizer?",
+                                "Adadelta optimization"                
+                        ],
+                        "responses": [
+                                "Optimizer that implements the Adadelta algorithm. Adadelta optimization is a stochastic gradient descent method that is based on adaptive learning rate per dimension to address two drawbacks: The continual decay of learning rates throughout training. The need for a manually selected global learning rate"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdagradOptimizator",
+                        "patterns": [
+                                "Sta je Adagrad optimizator",
+                                "Kada je pozeljno koristiti Adagrad optimizator",
+                                "Kada se koristi Adagrad optimizator",
+                                "Kada preporucujete upotrebu Adagrad optimizatora",
+                                "Adagrad optimizator?",
+                                "Adagrad optimizacija?"                
+                        ],
+                        "responses": [
+                                "Adagrad je optimizator sa stopama ucenja specificnih za parametre, koje su prilagodjene u odnosu na to koliko cesto se parametar azurira tokom treninga. Sto vise azuriranja parametar primi, manja su azuriranja."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "AdagradOptimizatorEngleski",
+                        "patterns": [
+                                "What is Adagrad optimizer?",
+                                "What is Adagrad optimizer used for?",
+                                "When is it desirable to use Adagrad optimizer",
+                                "When you recommend using Adagrad optimizer",
+                                "Adagrad optimizer?",
+                                "Adagrad optimization"                
+                        ],
+                        "responses": [
+                                "Adagrad is an optimizer with parameter-specific learning rates, which are adapted relative to how frequently a parameter gets updated during training. The more updates a parameter receives, the smaller the updates."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "FtrlOptimizator",
+                        "patterns": [
+                                "Sta je Ftrl optimizator",
+                                "Kada je pozeljno koristiti Ftrl optimizator",
+                                "Kada se koristi Ftrl optimizator",
+                                "Kada preporucujete upotrebu Ftrl optimizatora",
+                                "Ftrl optimizator?",
+                                "Ftrl optimizacija?"                
+                        ],
+                        "responses": [
+                                "Follow The Regularized Leader (FTRL) je algoritam optimizacije razvijen u Google-u za predvidjanje stope klikova pocetkom 2010-ih. Najprikladniji ja za plitke modele sa velikim i retkim prostorima."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "FtrlOptimizatorEngleski",
+                        "patterns": [
+                                "What is Ftrl optimizer?",
+                                "What is Ftrl optimizer used for?",
+                                "When is it desirable to use Ftrl optimizer",
+                                "When you recommend using Ftrl optimizer",
+                                "Ftrl optimizer?",
+                                "Ftrl optimization"                
+                        ],
+                        "responses": [
+                                "Follow The Regularized Leader (FTRL) is an optimization algorithm developed at Google for click-through rate prediction in the early 2010s. It is most suitable for shallow models with large and sparse feature spaces."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "aktivacionaFunkcija",
+                        "patterns": [
+                                "Koja aktivaciona funkcija je najbolja",
+                                "Koji je najbolji izbor aktivacione funkcije za treniranje modela",
+                                "Koja aktivaciona funkcija ima najbolje karakteristike"
+                        ],
+                        "responses": [
+                                "ReLU aktivaciona funkcija se siroko koristi i podrazumevani je izbor jer daje bolje rezultate. Ako naidjemo na slucaj mrtvih neurona u nasim mrezama, ReLU funkcija je najbolji izbor. ReLU funkciju treba koristiti samo u skrivenim slojevima."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "aktivacionaFunkcijaEngleski",
+                        "patterns": [
+                                "Which activation function is the best?",
+                                "What is the best choice of activation function for model training",
+                                "Which activation function has the best characteristics"
+                        ],
+                        "responses": [
+                                "ReLU activation function is widely used and is default choice as it yields better results. If we encounter a case of dead neurons in our networks the leaky ReLU function is the best choice. ReLU function should only be used in the hidden layers."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "NeuralNetwork",
+                        "patterns": [
+                                "Sta su neuronske mreze",
+                                "Šta su neuronske mreže",
+                                "Šta predstavljaju neuronske mreže",
+                                "Sta je neuronska mreza?",
+                                "Šta predstavlja neuronska mreža"
+                        ],
+                        "responses": [
+                                "Neuronska mreza je niz algoritama koji nastoje da prepoznaju osnovne odnose u skupu podataka kroz proces koji oponasa nacin na koji ljudski mozak funkcionise. Neuronske mreze su tehnika za pravljenje kompjuterskog programa koji uci iz podataka. Ovo je idealno mesto ako zelite da naucite sve o neuronskim mrezama. :)"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "NeuralNetworkEngleski",
+                        "patterns": [
+                                "What are neural networks",
+                                "What is neural network?"
+                        ],
+                        "responses": [
+                                "A neural network is a series of algorithms that seek to recognize basic relationships in a data set through a process that mimics the way the human brain functions. Neural networks are a technique for creating a computer program that learns from data. This is an ideal place if you want to learn all about neural networks. :)"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "Sum",
+                        "patterns": [
+                                "Sta je sum",
+                                "Sta predstavlja sum?",
+                                "Sta oznacava sum",
+                                "Sta je šum"
+                        ],
+                        "responses": [
+                                "Ljudi ce verovatno praviti greske tokom prikupljanja podataka, dok instrumenti koji prikupljaju podatke mogu biti netacni, sto dovodi do gresaka u skupu podataka. Greske su poznate kao sum."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "SumEngleski",
+                        "patterns": [
+                                "What is noise",
+                                "What is noise in neural network",
+                                "What does noise mean"
+                        ],
+                        "responses": [
+                                "People are likely to make mistakes during data collection, while data collection instruments may be inaccurate, leading to errors in the data set. Mistakes are known as noise."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "model",
+                        "patterns": [
+                                "Sta je model",
+                                "Sta predstavlja model",
+                                "Sta oznacava model",
+                                "Kako se tumaci model"
+                        ],
+                        "responses": [
+                                "Model u masinskom ucenju je rezultat algoritma masinskog ucenja koji se pokrece na podacima. Model predstavlja ono sto je naucio algoritam masinskog ucenja"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "modelEngleski",
+                        "patterns": [
+                                "What is model",
+                                "How the model is interpreted",
+                                "What does the model mean?"
+                        ],
+                        "responses": [
+                                "A model in machine learning is the output of a machine learning algorithm run on data. A model represents what was learned by a machine learning algorithm"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "neuron",
+                        "patterns": [
+                                "Sta je neuron",
+                                "Sta predstavlja neuron",
+                                "Sta oznacava neuron",
+                                "Sta su neuroni",
+                                "Sta predstavljaju neuroni",
+                                "Sta oznacavaju neuroni"
+                        ],
+                        "responses": [
+                                "Neuroni u modelima masinskog ucenja su cvorovi kroz koje teku podaci i proracuni. Neuroni rade ovako: primaju jedan ili vise ulaznih signala. Ovi ulazi mogu doci ili iz skupa sirovih podataka ili iz neurona pozicioniranih na prethodnom sloju neuronske mreze."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "neuronEngleski",
+                        "patterns": [
+                                "What is neuron",
+                                "what the neuron signifies",
+                                "What are neurons",
+                                "What neurons mean"
+                        ],
+                        "responses": [
+                                "Neurons in machine learning models are the nodes through which data and calculations flow. Neurons work like this: they receive one or more input signals. These inputs can come either from a set of raw data or from neurons positioned on the previous layer of the neural network."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "epoha",
+                        "patterns": [
+                                "Sta je epoha",
+                                "Sta predstavlja epoha",
+                                "Kako se tumaci epoha",
+                                "Sta oznacava epoha"
+                        ],
+                        "responses": [
+                                "Epoha je termin koji se koristi u masinskom ucenju i oznacava broj prolaza celokupnog skupa podataka za obuku koji je algoritam masinskog ucenja zavrsio. Skupovi podataka se obicno grupisu u grupe (narocito kada je kolicina podataka veoma velika)"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "epohaEngleski",
+                        "patterns": [
+                                "What is epoch",
+                                "What an epoch represents",
+                                "How the epoch is interpreted",
+                                "What the epoch signifies"
+                        ],
+                        "responses": [
+                                "An epoch is a term used in machine learning and indicates the number of passes of the entire training dataset the machine learning algorithm has completed. Datasets are usually grouped into batches (especially when the amount of data is very large)"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "hiperparametar",
+                        "patterns": [
+                                "Sta je hiperparametar",
+                                "Sta predstavlja hiperparametar",
+                                "Sta oznacava hiperparametar",
+                                "Sta su hiperparametri",
+                                "Sta predstavljaju hiperparametri",
+                                "Sta oznacavaju hiperparametri"
+                        ],
+                        "responses": [
+                                "Hiperparametar je parametar masinskog ucenja cija se vrednost bira pre nego sto se algoritam za ucenje obuci. Hiperparametre ne treba mesati sa parametrima. U masinskom ucenju, parametar oznake se koriste za identifikaciju promenljivih cije se vrednosti uce tokom treninga."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "hiperparametarEngleski",
+                        "patterns": [
+                                "What is hyperparameter ",
+                                "What an hyperparameter represents",
+                                "How the hyperparameter is interpreted",
+                                "What the hyperparameter signifies"
+                        ],
+                        "responses": [
+                                "A hyperparameter is a machine learning parameter whose value is chosen before a learning algorithm is trained. Hyperparameters should not be confused with parameters . In machine learning, the label parameter is used to identify variables whose values are learned during training."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "sloj",
+                        "patterns": [
+                                "Sta je sloj",
+                                "Sta predstavlja sloj",
+                                "Sta oznacava sloj",
+                                "Sta su slojevi",
+                                "Sta predstavljaju slojevi",
+                                "Sta oznacavaju slojevi"
+                        ],
+                        "responses": [
+                                "Sloj je kontejner koji obicno prima tezinski ulaz, transformise ga skupm uglavnom nelinearnih funkcija i zatim prosledjuje vrednost kao izlaz sledecem sloju."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "slojEngleski",
+                        "patterns": [
+                                "What is layer",
+                                "What an layer represents",
+                                "How the layer is interpreted",
+                                "What the layer signifies"
+                        ],
+                        "responses": [
+                                "Sloj je kontejner koji obicno prima tezinski ulaz, transformise ga skupm uglavnom nelinearnih funkcija i zatim prosledjuje vrednost kao izlaz sledecem sloju."
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "proveraModela",
+                        "patterns": [
+                                "Kako da proverimo model",
+                                "Kako da proverim da li mi je model dobar",
+                                "Kako da proverim tacnost mog modela",
+                                "Kako da proverim da li je moj model ispravan"
+                        ],
+                        "responses": [
+                                "Ukoliko zelite da proverite da li regresioni model dobar onda gledamo Srednju kvadratnu gresku(Mean Squared Error) i greska modela mora biti mala, a ukoliko gledamo da li je klasifikacioni model ispravan onda gledamo tacnost (Accuracy) modela i potrebno je da tacnost bude sto vece na kraju treniranja modela. Ove statistike se gledaju na graficima, klikom na dugme 'TRAIN MODEL' prikazace se grafici"
+                        ],
+
+                        "context_set": ""
+                },
+                {
+                        "tag": "proveraModelaEngleski",
+                        "patterns": [
+                                "How to check the model",
+                                "How to check if my model is good",
+                                "How to check the accuracy of my model",
+                                "How to check if my model is correct"
+                        ],
+                        "responses": [
+                                "If you want to check if the regression model is good then we look at the Mean Squared Error and the model error must be small, and if we look to see if the classification model is correct then we look at the accuracy of the model and it is necessary that the accuracy is as high as possible at the end of model training. These statistics are viewed on graphs, clicking on the 'TRAIN MODEL' button will display graphs"
+                        ],
+
+                        "context_set": ""
+                }
+
+        ]
+}

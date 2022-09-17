@@ -1,0 +1,16 @@
+@media (max-width: 768px){
+  .divWBorder{
+    border-bottom: 1px solid gray;
+  }
+}
+@media (min-width: 769px){
+  .divWBorder{
+    border-right: 1px solid gray;
+  }
+}
+
+.modal-content
+{
+    background-color: var(--form-color);
+}
+
